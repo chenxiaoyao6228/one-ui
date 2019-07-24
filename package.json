@@ -1,0 +1,70 @@
+{
+  "name": "one",
+  "version": "0.0.0",
+  "description": "\"one react ui framework\"",
+  "main": "index.js",
+  "scripts": {
+    "stylelint:fix": "stylelint 'components/**/*.less' --syntax less --fix",
+    "eslint:fix": "",
+    "tslint:fix": "tslint -c tsconfig.json components/**/*.{ts,tsx}' --fix",
+    "lint": "npm run tslint:fix && npm run stylelint:fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9001",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components"
+  ],
+  "author": "ChenXiaoyao <chenxiaoyao6228@163.com> (http://www.chenxiaoyao.cn/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@storybook/addon-actions": "5.1.9",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-links": "5.1.9",
+    "@storybook/addons": "5.1.9",
+    "@storybook/react": "5.1.9",
+    "@types/classnames": "^2.2.9",
+    "@types/jest": "24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/storybook__react": "^4.0.2",
+    "autoprefixer": "^9.6.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "8.0.6",
+    "classnames": "^2.2.6",
+    "css-loader": "^3.1.0",
+    "cssnano": "^4.1.10",
+    "cz-conventional-changelog": "3.0.2",
+    "jest": "24.8.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0",
+    "prettier-stylelint": "^0.4.2",
+    "prop-types": "^15.7.2",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "style-loader": "^0.23.1",
+    "stylelint-config-idiomatic-order": "^7.0.3",
+    "ts-jest": "24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  },
+  "resolutions": {
+    "@types/react": "^16.8.23"
+  }
+}
