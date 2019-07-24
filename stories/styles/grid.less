@@ -1,0 +1,22 @@
+@import '../../components/styles/index.less';
+
+.demo {
+    &-row {
+        height: 40px;
+        margin-bottom: 20px;
+        line-height: 40px;
+        text-align: center;
+        &-flex {
+            height: 100px;
+            background-color: @border-color;
+        }
+    }
+    &-col {
+        background: @info-color;
+        border: 1px solid @border-color;
+        &-gutter {
+            background-clip: content-box;
+            border: none;
+        }
+    }
+}

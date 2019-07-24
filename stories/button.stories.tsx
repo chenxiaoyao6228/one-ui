@@ -4,5 +4,5 @@ import Btn from '../components/button';
 
 storiesOf('Button', module).
     add('btn', () => {
-        return <Btn prefix="lla"></Btn>
+        return (<Btn prefix="lla" />);
     });
