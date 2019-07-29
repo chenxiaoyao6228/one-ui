@@ -1,12 +1,12 @@
-import React from "react";
-import "./style/index.less";
+import React from 'react';
+import './style/index.less';
 
 interface Props {
-    prefix?: string;
+  prefix?: string;
 }
 
 export default class Btn extends React.Component<Props, {}> {
-    render() {
-        return <button className="one-btn">button</button>
-    }
+  render() {
+    return <button className="one-btn">button</button>;
+  }
 }

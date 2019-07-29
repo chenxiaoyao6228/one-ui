@@ -1,6 +1,7 @@
 {
-  "extends": ["tslint-eslint-rules", "tslint-react"],
+  "extends": ["tslint-eslint-rules", "tslint-react", "tslint-react-hooks"],
   "rules": {
+    "react-hooks-nesting": "error",
     "align": [
       true,
       "parameters",
@@ -59,7 +60,7 @@
     "no-string-literal": true,
     "no-switch-case-fall-through": false,
     "no-trailing-whitespace": true,
-    "no-unused-expression": true,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
     "no-use-before-declare": false,
     "no-var-keyword": true,
     "no-var-requires": false,

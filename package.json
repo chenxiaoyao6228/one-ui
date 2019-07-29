@@ -6,8 +6,8 @@
   "scripts": {
     "stylelint:fix": "stylelint components/**/*.less --syntax less --fix",
     "eslint:fix": "",
-    "tslint:fix": "tslint -c tsconfig.json components/**/*.{ts,tsx}' --fix",
-    "lint": "npm run tslint:fix && npm run stylelint:fix",
+    "tslint:fix": "tslint -c tslint.json components/**/*.{ts,tsx}' --fix",
+    "lint": "prettier --write components/**/*.tsx components/**/*.less && npm run tslint:fix && npm run stylelint:fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9001",
     "build-storybook": "build-storybook"
@@ -21,10 +21,13 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.5.5",
-    "@storybook/addon-actions": "5.1.9",
+    "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-knobs": "^5.1.9",
     "@storybook/addon-links": "5.1.9",
-    "@storybook/addons": "5.1.9",
+    "@storybook/addon-notes": "^5.1.9",
+    "@storybook/addon-viewport": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
     "@storybook/react": "5.1.9",
     "@types/classnames": "^2.2.9",
     "@types/jest": "24.0.15",
@@ -38,6 +41,7 @@
     "css-loader": "^3.1.0",
     "cssnano": "^4.1.10",
     "cz-conventional-changelog": "3.0.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "jest": "24.8.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -55,6 +59,7 @@
     "tslint": "^5.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0",
+    "tslint-react-hooks": "^2.2.1",
     "typescript": "^3.5.3"
   },
   "config": {
@@ -62,11 +67,24 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2"
   },
   "resolutions": {
     "@types/react": "^16.8.23"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-idiomatic-order",
+      "./node_modules/prettier-stylelint/config.js"
+    ],
+    "rules": {
+      "indentation": 2,
+      "string-quotes": "single"
+    }
   }
 }
