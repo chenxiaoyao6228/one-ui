@@ -1,7 +1,7 @@
 import React, { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
-import './styles/styles.less';
+import './styles/index.less';
 
 export interface Props {
   prefix?: string;

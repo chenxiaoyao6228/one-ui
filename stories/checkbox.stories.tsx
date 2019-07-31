@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
 import './styles/checkbox.less';
-
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const defaultCheckedList = ['Apple', 'Orange'];
 
