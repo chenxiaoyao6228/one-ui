@@ -1,0 +1,17 @@
+@import '../../styles/index.less';
+
+.one-breadcrumb {
+  font-size: 16px;
+  list-style: none;
+  &-item {
+    color: @font-color;
+    &-seperator {
+      margin: 0 8px;
+    }
+    &-link {
+      & > a {
+        text-decoration: none;
+      }
+    }
+  }
+}

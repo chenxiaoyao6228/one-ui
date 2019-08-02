@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Props } from './PropsTyps';
+// import cls from 'classnames';
 import './style/index.less';
 
-interface Props {
-  prefix?: string;
-}
+export default class Btn extends Component<Props, {}> {
+  static defaultProps = {};
 
-export default class Btn extends React.Component<Props, {}> {
   render() {
-    return <button className="one-btn">button</button>;
+    return <button>button</button>;
   }
 }

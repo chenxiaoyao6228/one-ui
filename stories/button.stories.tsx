@@ -5,7 +5,6 @@ import Btn from '../components/button';
 storiesOf('Button', module)
     .add('btn',
         () => {
-            return (<Btn prefix="lla" />);
+            return (<Btn />);
         },
-        { notes: 'A very simple component' },
     );

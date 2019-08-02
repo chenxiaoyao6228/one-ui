@@ -5,6 +5,7 @@ export interface AvatarPropsType {
   src?: string;
   alt?: string;
   style?: object;
+  className?: string;
 }
 
 export interface AvatarState {

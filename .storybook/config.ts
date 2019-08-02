@@ -2,11 +2,11 @@ import { addParameters, configure } from '@storybook/react';
 import '@storybook/addon-console';
 
 // automatically import all files ending in *.stories.tsx
-// const req = require.context('../stories', true, /\.stories\.tsx$/);
+const req = require.context('../stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
-  // req.keys().forEach(req);
-  require('../stories/avatar.stories.tsx');
+  req.keys().forEach(req);
+  // require('../stories/breadcrumb.stories.tsx');
 }
 configure(loadStories, module);
 
