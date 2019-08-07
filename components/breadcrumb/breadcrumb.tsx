@@ -7,7 +7,7 @@ import './style/index.less';
 export default class Breadcrumb extends Component<Props, {}> {
   static defaultProps = {
     prefix: 'one-breadcrumb',
-    seperator: '/'
+    seperator: '/',
   };
   static Item: typeof BreadcrumbItem;
 
@@ -16,10 +16,10 @@ export default class Breadcrumb extends Component<Props, {}> {
     const items = Children.map(children, (element, index) => {
       return cloneElement(element as ReactElement<any>, {
         seperator,
-        key: index
+        key: index,
       });
     });
 
-    return <div className={`${prefix}`} >{items}</div>;
+    return <div className={`${prefix}`}>{items}</div>;
   }
 }
