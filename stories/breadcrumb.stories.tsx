@@ -12,7 +12,7 @@ storiesOf('Breadcrumb', module)
         <Breadcrumb>
           {navList.map(item => {
             return (<Breadcrumb.Item key={item}>
-              <a >{item}</a>
+              <span >{item}</span>
             </Breadcrumb.Item>
             );
           })
@@ -22,7 +22,7 @@ storiesOf('Breadcrumb', module)
         <Breadcrumb seperator=">">
           {navList.map(item => {
             return (<Breadcrumb.Item key={item}>
-              <a href="lal">{item}</a>
+              <a href="#">{item}</a>
             </Breadcrumb.Item>
             );
           })

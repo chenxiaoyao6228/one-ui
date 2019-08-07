@@ -1,15 +1,30 @@
 @import '../../styles/index.less';
 
-.one-breadcrumb {
-  font-size: 16px;
+@prefixCls: ~'@{prefix}-breadcrumb';
+
+.@{prefixCls}{
+  font-size: @breadcrumb-font-size;
   list-style: none;
+  a {
+    color: @breadcrumb-link-color;
+    transition: color @default-transition;
+    &:hover {
+      color: @breadcrumb-link-hover-color;
+    }
+  }
   &-item {
-    color: @font-color;
+    &:last-child {
+      .one-breadcrumb-item-seperator {
+        display: none;
+      }
+    }
+    color: @breadcrumb-link-color;
     &-seperator {
-      margin: 0 8px;
+      margin: @bread-crumb-seperator-margin;
     }
     &-link {
       & > a {
+        color: @font-color;
         text-decoration: none;
       }
     }

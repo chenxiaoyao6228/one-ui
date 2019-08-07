@@ -5,10 +5,9 @@ import './style/index.less';
 export default class BreadcrumbItem extends Component<ItemProps, {}> {
   static defaultProps = {
     prefix: 'one-breadcrumb-item',
-    seperator: '/',
   };
   render() {
-    const { prefix, seperator, children } = this.props;
+    const { prefix, children, seperator } = this.props;
     return (
       <span className={`${prefix}`}>
         <span className={`${prefix}-link`}>{children}</span>

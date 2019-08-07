@@ -1,24 +1,25 @@
-import React, { Component, cloneElement, ReactElement } from 'react';
+import React, { Component, ReactElement, Children, cloneElement } from 'react';
 import { Props } from './PropsType';
+import BreadcrumbItem from './breadcrumbItem';
 import './style/index.less';
+// import { AppContextInterface, withAppContext } from "../config-provider";
 
 export default class Breadcrumb extends Component<Props, {}> {
   static defaultProps = {
     prefix: 'one-breadcrumb',
-    seperator: '/',
+    seperator: '/'
   };
-  static Item: any;
+  static Item: typeof BreadcrumbItem;
 
   render() {
     const { prefix, children, seperator } = this.props;
-
-    const items = React.Children.map(children, (element, index) => {
+    const items = Children.map(children, (element, index) => {
       return cloneElement(element as ReactElement<any>, {
         seperator,
-        key: index,
+        key: index
       });
     });
 
-    return <div className={`${prefix}`}>{items}</div>;
+    return <div className={`${prefix}`} >{items}</div>;
   }
 }
