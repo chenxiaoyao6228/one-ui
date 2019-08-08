@@ -1,12 +1,13 @@
 // Button
-.btn-hover(@color: @default-color, @lighten: 4%, @font-color: #fff) {
-  border: 1px solid @color;
-  background-color: @color;
-  color: @font-color;
-  &:hover,
-  &:active {
-    background-color: lighten(@color, @lighten);
-  }
+.btn-size(@height, @padding, @font-size, @border-radius) {
+  height: @height;
+  padding: @padding;
+  border-radius: @border-radius;
+  font-size: @font-size;
+  line-height: @height;
+}
+.btn-bg(@bg) {
+  background-color: @bg;
 }
 
 // Grid
@@ -14,7 +15,7 @@
 
 .loop-grid-columns(@index, @class) when (@index > 0) {
   .loop-grid-columns(@index - 1, @class);
-  .che-col@{class}-@{index} {
+  .@{prefix}-col@{class}-@{index} {
     width: percentage(@index / @grid-columns);
   }
 }

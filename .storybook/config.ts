@@ -6,7 +6,7 @@ const req = require.context('../stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
   req.keys().forEach(req);
-  // require('../stories/breadcrumb.stories.tsx');
+  // require('../stories/button.stories.tsx');
 }
 configure(loadStories, module);
 

@@ -1,18 +1,24 @@
-// Colors
-@primary-color: #3775c0;
-@warning-color: #ff8a0c;
-@error-color: #d9534f;
-@success-color: #58b359;
-@info-color: #5bc0de;
-
 // Prefix
 @prefix: one;
+
+// Colors
+@primary-color: #409eff;
+@warning-color: #e6a23c;
+@error-color: #f56c6c;
+@success-color: #67c23a;
+@info-color: #909399;
 
 // Text
 @font-size: 16px;
 @font-size-lg: @font-size + 2px;
 @font-size-sm: 14px;
-@font-color: rgba(0, 0, 0, 0.65);
+
+@font-color-dark: #303133;
+@font-color: #606266;
+@font-color-light: #909399;
+@font-color-white: #fff;
+
+@placeholder-color: #c0c4cc;
 
 // Outline
 @outline-blur-size: 0;
@@ -23,7 +29,10 @@
 @shadow-color: rgba(0, 0, 0, 0.15);
 
 // Border
-@border-color: #e8e8e8;
+@border-color-darker: #dcdfe6;
+@border-color: #e4e7ed;
+@border-color-lighter: #ebeef5;
+
 @border-width: 1px;
 @border-style: solid;
 @border-radius: 4px;
@@ -38,7 +47,8 @@
 @disabled-color: #f7f7f7;
 
 // Background
-@bg-color: #fafafa;
+@bg-color-black: #000;
+@bg-color-white: #fafafa;
 
 // Animation
 @ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
@@ -59,7 +69,7 @@
 @animate-time : .3s;
 @default-transition: @animate-time @animate-type;
 
-// Avatar 
+// Avatar
 @avatar-size-sm: 24px;
 @avatar-fontsize-sm: 16px;
 @avatar-size-md: 32px;
@@ -69,6 +79,37 @@
 @avatar-border-radius: 4px;
 
 // Button
+@btn-size-lg: 50px;
+@btn-size: 40px;
+@btn-size-sm: 30px;
+
+@btn-height-lg: 50px;
+@btn-height: 40px;
+@btn-height-sm: 30px;
+
+@btn-border-radius: @border-radius;
+@btn-border-radius-sm: @border-radius;
+
+@btn-primary-color: @primary-color;
+@btn-warning-color: @warning-color;
+@btn-info-color: @info-color;
+@btn-success-color: @success-color;
+@btn-error-color: @error-color;
+@btn-disabled-color: @disabled-color;
+@btn-default-color: @bg-color-white;
+
+@btn-border-color: @border-color;
+
+@btn-font-color-white: @font-color-white;
+@btn-font-color-dark: @font-color-dark;
+
+@btn-padding-sm: 0 @padding-sm - 1px;
+@btn-padding: 0 @padding-sm - 1px;
+@btn-padding-lg: 0 @padding-md;
+
+@btn-font-size-lg: @font-size-lg;
+@btn-font-size-sm: @font-size-sm;
+@btn-font-size: @font-size;
 
 // Breadcrumb
 @bread-crumb-seperator-margin: 0 @padding-xs;
@@ -77,11 +118,9 @@
 @breadcrumb-link-color: @font-color;
 @breadcrumb-link-hover-color: @primary-color;
 
-// Grid 
+// Grid
 @screen-xs: 480px;
 @screen-sm: 576px;
 @screen-md: 768px;
 @screen-lg: 992px;
 @screen-xl: 1200px;
-
-
