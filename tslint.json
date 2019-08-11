@@ -80,8 +80,7 @@
     ],
     "quotemark": [
       true,
-      "single",
-      "jsx-double"
+      "single"
     ],
     "radix": true,
     "semicolon": [

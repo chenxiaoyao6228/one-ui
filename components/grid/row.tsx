@@ -14,7 +14,7 @@ export interface Props {
 
 export default class Row extends Component<Props> {
   static defaultProps = {
-    prefix: 'che-row',
+    prefix: 'one-row',
     gutter: 0,
   };
   static propTypes = {

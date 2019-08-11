@@ -39,7 +39,7 @@ class Checkbox extends Component<PropsTypes, any> {
       >
         <span className={`${prefix}__container`}>
           <input
-            type="checkbox"
+            type='checkbox'
             className={`${prefix}__input`}
             disabled={disabled}
             checked={checked || false}
@@ -52,7 +52,7 @@ class Checkbox extends Component<PropsTypes, any> {
             className={cls(`${prefix}__inner`, { 'is-checked': checked })}
           />
         </span>
-        <span className="one-checkbox__content">{children}</span>
+        <span className='one-checkbox__content'>{children}</span>
       </label>
     );
   }

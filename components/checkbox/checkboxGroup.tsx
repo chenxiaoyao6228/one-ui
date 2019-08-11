@@ -9,17 +9,19 @@ export default class CheckboxGroup extends Component<GroupPropsTypes, any> {
   };
   state = {
     options: this.props.options,
+    checkedValue: this.props.defaultValue || [],
   };
   onCheckChange = (e: any) => {
-    let { value, onChange } = this.props;
+    const { onChange } = this.props;
+    let { checkedValue } = this.state;
     const targetValue = e.target.value;
-    const index = value.indexOf(targetValue);
+    const index = checkedValue.indexOf(targetValue);
     if (index > -1) {
-      value.splice(index, 1);
+      checkedValue.splice(index, 1);
     } else {
-      value.push(targetValue);
+      checkedValue.push(targetValue);
     }
-    onChange && onChange(value);
+    onChange && onChange(checkedValue);
   }
   render() {
     const { options } = this.state;

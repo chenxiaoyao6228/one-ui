@@ -1,6 +1,84 @@
-@primary-color: red;
+@import '../../styles/index.less';
 
-.one-btn {
-  background: @primary-color;
-  color: red;
+@prefixCls: ~'@{prefix}-button';
+.@{prefixCls} {
+  position: relative;
+  display: inline-block;
+  border: 0;
+  border: 1px solid currentColor;
+  background-color: @btn-default-color;
+  color: @btn-font-color-dark;
+  cursor: pointer;
+  line-height: 1.5;
+  outline: 0;
+  white-space: nowrap;
+  .btn-size(@btn-height, @btn-padding, @btn-font-size, @btn-border-radius);
+  &-primary,
+  &-info,
+  &-warning,
+  &-error,
+  &-success {
+    color: #fff;
+  }
+  &-primary {
+    .btn-bg(@btn-primary-color);
+    &-inverted {
+      background-color: @btn-default-color;
+      color: @btn-primary-color;
+    }
+  }
+  &-info {
+    .btn-bg(@btn-info-color);
+    &-inverted {
+      background-color: @btn-default-color;
+      color: @btn-info-color;
+    }
+  }
+  &-warning {
+    .btn-bg(@btn-warning-color);
+    &-inverted {
+      background-color: @btn-default-color;
+      color: @btn-warning-color;
+    }
+  }
+  &-success {
+    .btn-bg(@btn-success-color);
+    &-inverted {
+      background-color: @btn-default-color;
+      color: @btn-success-color;
+    }
+  }
+  &-error {
+    .btn-bg(@btn-error-color);
+    &-inverted {
+      background-color: @btn-default-color;
+      color: @btn-error-color;
+    }
+  }
+  &-sm {
+    .btn-size(
+      @btn-height-sm,
+      @btn-padding-sm,
+      @btn-font-size-sm,
+      @btn-border-radius
+    );
+  }
+  &-lg {
+    .btn-size(
+      @btn-height-lg,
+      @btn-padding-lg,
+      @btn-font-size-lg,
+      @btn-border-radius
+    );
+  }
+  &-disabled {
+    cursor: not-allowed;
+  }
+  &-block {
+    display: block;
+    width: 100%;
+  }
+  &-round {
+    border-radius: 50%;
+  }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
 import './styles/checkbox.less';
+import { Row, Col } from '../components/grid';
+
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const defaultCheckedList = ['Apple', 'Orange'];
 
@@ -65,21 +67,48 @@ storiesOf('Checkbox', module).add('checkbox',
       { label: 'Orange', value: 'Orange', disabled: false },
     ];
     return (
-      <div className="demo">
-        <h2>基本用法</h2>
-        <Checkbox checked value="me">选我</Checkbox>
-        <h2>禁用</h2>
-        <Checkbox disabled value="notme">禁止选我</Checkbox >
-        <h2>checkbox组</h2>
-        <CheckboxGroup options={plainOptions} />
-        <h3>选项options为对象</h3>
-        <CheckboxGroup options={options} />
-        <h3>默认值</h3>
-        <CheckboxGroup options={options} defaultValue={['Apple', 'Pear']} />
-        <h3>默认值中带有disabled</h3>
-        <CheckboxGroup options={optionsWithDisabled} disabled />
-        <h3>全选</h3>
-        <App />
+      <div className='demo'>
+        <Row>
+          <Col span={12}>
+            <h2>Basic</h2>
+            <Checkbox checked value='chooseme'>Choose me</Checkbox>
+          </Col>
+          <Col span={12}>
+            <h2>Disabled</h2>
+            <Checkbox disabled value='not allowed'>Not allowed</Checkbox >
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <h2>Checkbox Group</h2>
+            <CheckboxGroup options={plainOptions} />
+          </Col>
+          <Col span={12}>
+
+            <h2>Options As Object</h2>
+            <CheckboxGroup options={options} />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <h2>Default Values</h2>
+            <CheckboxGroup options={options} defaultValue={['Apple', 'Pear']} />
+          </Col>
+          <Col span={12}>
+            <h2>Options With Disabled</h2>
+            <CheckboxGroup options={optionsWithDisabled} disabled />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <h2>Select All</h2>
+            <App />
+          </Col>
+          <Col span={12}>
+            <h2>Click Event</h2>
+            <CheckboxGroup options={plainOptions} onChange={(v) => alert(JSON.stringify(v))} />
+          </Col>
+        </Row>
       </div >
     );
   },
