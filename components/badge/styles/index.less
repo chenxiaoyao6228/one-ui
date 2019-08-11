@@ -1,0 +1,39 @@
+@import '../../styles/index.less';
+
+@prefixCls: ~'@{prefix}-badge';
+.@{prefixCls} {
+  position: relative;
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+  &-inner {
+    position: absolute;
+    z-index: @badge-z-index;
+    top: -@badge-height / 2;
+    right: -@badge-width / 2;
+    min-width: @badge-width;
+    height: @badge-height;
+    box-sizing: border-box;
+    padding: @badge-padding;
+    background-color: @error-color;
+    border-radius: @badge-height / 2;
+    box-shadow: @shadow-color;
+    color: #fff;
+    font-size: @badge-font-size;
+    line-height: @badge-height;
+    text-align: center;
+    white-space: nowrap;
+
+    &.@{prefixCls}-dot {
+      top: -@badge-dot-width / 2;
+      right: -@badge-dot-width / 2;
+      width: @badge-dot-width;
+      min-width: @badge-dot-width;
+      height: @badge-dot-width;
+      padding: 0;
+      border-radius: 50%;
+      line-height: @badge-dot-width;
+    }
+  }
+}
