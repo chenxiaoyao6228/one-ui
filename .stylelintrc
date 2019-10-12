@@ -25,6 +25,10 @@
     value-list-max-empty-lines: null,
     unit-case: null,
     color-hex-case: null,
-    max-empty-lines: null
+    max-empty-lines: null,
+    string: "single",
+    no-descending-specificity: null,
+    font-family-no-duplicate-names: null,
+    no-empty-source: null
   }
 }

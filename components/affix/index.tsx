@@ -20,8 +20,7 @@ export default class Affix extends Component<PropsType, StateProps> {
 
   handleScroll = () => {
     const { offsetTop, callback } = this.props;
-    const scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     if (scrollTop >= this.offsetTop - offsetTop) {
       this.setState({ fixed: true });
       callback && callback(this.state.fixed);

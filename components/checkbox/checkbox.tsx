@@ -30,13 +30,7 @@ class Checkbox extends Component<PropsTypes, any> {
     const { prefix, disabled, children, indeterminate } = this.props;
     const { checked, value } = this.state;
     return (
-      <label
-        className={cls(
-          prefix,
-          { 'is-disabled': disabled },
-          { 'is-indeterminate': indeterminate },
-        )}
-      >
+      <label className={cls(prefix, { 'is-disabled': disabled }, { 'is-indeterminate': indeterminate })}>
         <span className={`${prefix}__container`}>
           <input
             type='checkbox'
@@ -48,9 +42,7 @@ class Checkbox extends Component<PropsTypes, any> {
               this.toggleChecked(e);
             }}
           />
-          <span
-            className={cls(`${prefix}__inner`, { 'is-checked': checked })}
-          />
+          <span className={cls(`${prefix}__inner`, { 'is-checked': checked })} />
         </span>
         <span className='one-checkbox__content'>{children}</span>
       </label>

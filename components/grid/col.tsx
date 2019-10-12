@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import cls from 'classnames';
 import './styles/index.less';
 
-const objectOrNumber = PropTypes.oneOfType([
-  PropTypes.object,
-  PropTypes.number,
-]);
+const objectOrNumber = PropTypes.oneOfType([PropTypes.object, PropTypes.number]);
 
 export interface ColSize {
   span?: number;
@@ -32,7 +29,7 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default class Col extends Component<ColProps, {}> {
   static defaultProps = {
-    prefix: 'che-col',
+    prefix: 'one-col',
   };
   static propTypes = {
     offset: PropTypes.number,
@@ -46,16 +43,7 @@ export default class Col extends Component<ColProps, {}> {
   };
   render() {
     const props: any = this.props;
-    const {
-      prefix,
-      children,
-      span,
-      gutter,
-      offset,
-      className,
-      style,
-      ...others
-    } = this.props;
+    const { prefix, children, span, gutter, offset, className, style, ...others } = this.props;
     let sizeClassObj = {};
     // 遍历，为每个媒体查询断点生成特定的class
     ['xl', 'lg', 'md', 'sm', 'xs'].forEach(size => {
@@ -82,9 +70,7 @@ export default class Col extends Component<ColProps, {}> {
       className,
       sizeClassObj,
     );
-    const colStyle = gutter
-      ? { paddingLeft: Number(gutter) / 2, paddingRight: Number(gutter) / 2 }
-      : {};
+    const colStyle = gutter ? { paddingLeft: Number(gutter) / 2, paddingRight: Number(gutter) / 2 } : {};
 
     return (
       <div className={classes} style={{ ...style, ...colStyle }}>

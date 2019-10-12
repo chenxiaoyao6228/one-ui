@@ -1,91 +1,120 @@
 {
   "name": "one",
   "version": "0.0.0",
-  "description": "\"one react ui framework\"",
-  "main": "index.js",
-  "scripts": {
-    "stylelint:fix": "stylelint components/**/*.less --syntax less --fix",
-    "eslint:fix": "",
-    "tslint:fix": "tslint -c tslint.json components/**/*.{ts,tsx}' --fix",
-    "lint": "prettier --write components/**/*.tsx components/**/*.less && npm run tslint:fix && npm run stylelint:fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 9001",
-    "build-storybook": "build-storybook"
-  },
+  "description": "React Components Collection With React Hooks",
   "keywords": [
     "react",
     "ui",
-    "components"
+    "components",
+    "hooks"
   ],
   "author": "ChenXiaoyao <chenxiaoyao6228@163.com> (http://www.chenxiaoyao.cn/)",
   "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn build:cjs && yarn build:es",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "commit": "git-cz",
+    "clean": "rimraf lib storybook-static esm",
+    "stylelint:fix": "stylelint components/**/*.less  --fix && echo 'Stylelint lint complete.'",
+    "tslint:fix": "tslint -c tslint.json components/**/*.{ts,tsx}' --fix && echo 'Tslint lint complete.'",
+    "prettier:fix": "prettier --write components/**/*.tsx components/**/*.less",
+    "lint": "npm run prettier:fix && npm run tslint:fix  && echo 'Lint complete.'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "release": "semantic-release",
+    "storybook": "start-storybook -p 6008",
+    "storybook:build": "build-storybook",
+    "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
+    "storybook:clean": "rimraf storybook-static"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commitmsg": "commitlint -E GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "jest --bail --findRelatedTests && echo 'Test complete.'",
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "commitizen": {
+    "path": "./node_modules/cz-conventional-changelog"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-knobs": "^5.1.9",
-    "@storybook/addon-links": "5.1.9",
-    "@storybook/addon-notes": "^5.1.9",
-    "@storybook/addon-viewport": "^5.1.9",
-    "@storybook/addons": "^5.1.9",
-    "@storybook/react": "5.1.9",
+    "@babel/core": "7.6.4",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/prompt": "~8.1.0",
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-info": "^5.2.3",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/addon-links": "5.2.3",
+    "@storybook/addon-notes": "^5.2.3",
+    "@storybook/addon-viewport": "^5.2.3",
+    "@storybook/addons": "^5.2.3",
+    "@storybook/react": "5.2.3",
     "@types/classnames": "^2.2.9",
-    "@types/jest": "24.0.15",
-    "@types/react": "^16.8.23",
+    "@types/jest": "24.0.18",
+    "@types/react": "^16.9.5",
     "@types/storybook__react": "^4.0.2",
-    "autoprefixer": "^9.6.1",
+    "autoprefixer": "^9.6.4",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "8.0.6",
+    "brace-expansion": "^1.1.11",
     "classnames": "^2.2.6",
-    "css-loader": "^3.1.0",
+    "commitlint": "^8.2.0",
+    "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "cz-conventional-changelog": "3.0.2",
-    "eslint-plugin-react-hooks": "^1.6.1",
-    "jest": "24.8.0",
-    "less": "^3.9.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "husky": "^3.0.8",
+    "jest": "^24.9.0",
+    "jest-config": "^24.9.0",
+    "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "lint-staged": "^9.4.2",
+    "locate-path": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
     "prettier-stylelint": "^0.4.2",
     "prop-types": "^15.7.2",
-    "react-docgen-typescript-loader": "^3.1.0",
-    "style-loader": "^0.23.1",
+    "react": "^16.10.2",
+    "react-docgen-typescript-loader": "^3.3.0",
+    "react-dom": "^16.10.2",
+    "resolve-cwd": "^3.0.0",
+    "shelljs": "^0.8.3",
+    "style-loader": "^1.0.0",
+    "stylelint": "^11.1.1",
     "stylelint-config-idiomatic-order": "^7.0.3",
-    "stylelint-config-standard": "^18.3.0",
-    "ts-jest": "24.0.2",
-    "tslint": "^5.18.0",
+    "stylelint-config-standard": "^19.0.0",
+    "ts-jest": "24.1.0",
+    "tslint": "^5.20.0",
     "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.0.0",
+    "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.1",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.4"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "pre-commit": [
-    "lint"
-  ],
   "dependencies": {
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "react-dom": "^16.10.2",
+    "react": "^16.10.2"
   },
   "resolutions": {
-    "@types/react": "^16.8.23"
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-idiomatic-order",
-      "./node_modules/prettier-stylelint/config.js"
-    ],
-    "rules": {
-      "indentation": 2,
-      "string-quotes": "single"
-    }
+    "@types/react": "^16.9.5"
   }
 }

@@ -29,9 +29,7 @@ export default class CheckboxGroup extends Component<GroupPropsTypes, any> {
     const Checkboxes = options.map(option => {
       const val = typeof option === 'object' ? option.value : option;
       const label = typeof option === 'object' ? option.label : option;
-      const checked =
-        (defaultValue && defaultValue.indexOf(val) > -1) ||
-        (value && value.indexOf(val) > -1);
+      const checked = (defaultValue && defaultValue.indexOf(val) > -1) || (value && value.indexOf(val) > -1);
       return (
         <Checkbox
           key={label.toString()}

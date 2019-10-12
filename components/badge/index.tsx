@@ -10,22 +10,9 @@ export default class Badge extends Component<PropsType, {}> {
     showZero: false,
   };
   renderBadge = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const {
-      className,
-      children,
-      count,
-      overflowCount,
-      showZero,
-      style,
-      dot,
-      onClick,
-    } = this.props;
+    const { className, children, count, overflowCount, showZero, style, dot, onClick } = this.props;
     const prefixCls = getPrefixCls('badge');
-    const classes = cls(
-      `${prefixCls}-inner`,
-      { [`${prefixCls}-dot`]: dot },
-      className,
-    );
+    const classes = cls(`${prefixCls}-inner`, { [`${prefixCls}-dot`]: dot }, className);
     return (
       <div className={`${prefixCls}`} onClick={onClick}>
         {count > 0 || (count === 0 && showZero) || dot ? (

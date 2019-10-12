@@ -16,7 +16,6 @@ export interface ConfigProviderProps {
   prefixCls?: string;
 }
 
-
 class ConfigProvider extends React.Component<ConfigProviderProps, any> {
   getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
     const { prefixCls = 'one' } = this.props;
@@ -27,12 +26,12 @@ class ConfigProvider extends React.Component<ConfigProviderProps, any> {
     const { children } = this.props;
     const config: ConfigConsumerProps = {
       ...context,
-      getPrefixCls: this.getPrefixCls
-    }
-    return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
+      getPrefixCls: this.getPrefixCls,
+    };
+    return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>;
   }
   render() {
-    return (<ConfigConsumer>{this.renderProvider}</ConfigConsumer>);
+    return <ConfigConsumer>{this.renderProvider}</ConfigConsumer>;
   }
 }
 
