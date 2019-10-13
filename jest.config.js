@@ -1,18 +1,11 @@
 module.exports = {
-  transform: {
-    '.(ts|tsx)': 'ts-jest'
-  },
   testEnvironment: 'jsdom',
-  moduleFileExtensions: ['ts', 'tsx', 'js'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
-  coverageThreshold: {
-    global: {
-      branches: 90,
-      functions: 95,
-      lines: 95,
-      statements: 95
-    }
+  transform: {
+    '\\.(ts|js)x?$': 'ts-jest',
+    '^.+\\.(css|less)$': './styleMock.js'
   },
-  collectCoverageFrom: ['components/*.{js,ts}', 'components/**/*.{js,ts}'],
-  setupFilesAfterEnv: ['<rootDir>/components/test/setup.ts']
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
+  collectCoverageFrom: ['components/*.{js,ts,jsx,tsx}', 'components/**/*.{js,ts,jsx,tsx}'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom', '@testing-library/react/dont-cleanup-after-each']
 };
