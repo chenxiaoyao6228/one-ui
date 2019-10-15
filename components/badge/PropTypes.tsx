@@ -1,5 +1,5 @@
 import * as React from 'react';
-export interface PropsType {
+export interface Props {
   prefix?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -8,5 +8,5 @@ export interface PropsType {
   showZero?: boolean;
   offset?: number[];
   dot?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent) => void;
 }

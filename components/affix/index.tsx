@@ -1,58 +1,51 @@
-import React, { Component, createRef } from 'react';
-import { PropsType, StateProps } from './PropTypes';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import React, { useState, useEffect, useRef } from 'react';
+import { PropsType } from './PropTypes';
 import cls from 'classnames';
 import './styles/index.less';
 
-export default class Affix extends Component<PropsType, StateProps> {
-  static defaultProps = {
-    offsetTop: 0,
-  };
+const Affix: React.FC<PropsType> =
+  ({ offsetTop = 0, callback, className, style, children, ...attr }) => {
+    const [fixed, setFixed] = useState(false)
 
-  offsetTop: number;
-  private container = createRef<HTMLDivElement>();
-  constructor(props: PropsType) {
-    super(props);
-    this.state = {
-      fixed: false,
-    };
+    const container = useRef<HTMLDivElement>();
+
+    const handleScroll = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop - offsetTop) {
+        setFixed(true)
+        callback && callback(fixed);
+      } else {
+        setFixed(false)
+      }
+    }
+
+    useEffect(() => {
+      const node = container.current;
+      if (node) {
+        offsetTop = node.getBoundingClientRect().top;
+      }
+      window.addEventListener('scroll', handleScroll);
+
+      return function cleanup() {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    })
+
+    const renderAffix = ({ getPrefixCls }: ConfigConsumerProps) => {
+      const prefixCls = getPrefixCls('affix');
+      const classes = cls(prefixCls, className, {
+        [`${prefixCls}-fixed`]: fixed,
+      });
+      const styles = { ...style, top: offsetTop };
+      return (
+        <div className={classes} style={styles} {...attr} ref={container}>
+          {children}
+        </div>
+      );
+    }
+    return <ConfigConsumer>{renderAffix}</ConfigConsumer>;
+
   }
 
-  handleScroll = () => {
-    const { offsetTop, callback } = this.props;
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop >= this.offsetTop - offsetTop) {
-      this.setState({ fixed: true });
-      callback && callback(this.state.fixed);
-    } else {
-      this.setState({ fixed: false });
-    }
-  }
-  componentDidMount() {
-    const node = this.container.current;
-    if (node) {
-      this.offsetTop = node.getBoundingClientRect().top;
-    }
-    window.addEventListener('scroll', this.handleScroll);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-  renderAffix = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const prefixCls = getPrefixCls('affix');
-    const { fixed } = this.state;
-    const { className, style, children, offsetTop, ...attr } = this.props;
-    const classes = cls(prefixCls, className, {
-      [`${prefixCls}-fixed`]: fixed,
-    });
-    const styles = { ...style, top: offsetTop };
-    return (
-      <div className={classes} style={styles} {...attr} ref={this.container}>
-        {children}
-      </div>
-    );
-  }
-  render() {
-    return <ConfigConsumer>{this.renderAffix}</ConfigConsumer>;
-  }
-}
+export default Affix

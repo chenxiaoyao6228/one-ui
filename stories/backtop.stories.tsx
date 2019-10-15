@@ -9,10 +9,11 @@ import './styles/grid.less';
 
 storiesOf('Backtop', module)
   .add('backtop', () => (
-    <div className='demo' style={{minHeight: 3000}}>
+    <div className='demo' style={{ minHeight: 3000 }}>
       <Row>
         <Col span={12}>
           <h2>Basic backtop</h2>
+          <p>Scroll down the page to see the backtop button</p>
           <Backtop>
             <Button type="primary">Top</Button>
           </Backtop>
@@ -20,4 +21,3 @@ storiesOf('Backtop', module)
       </Row>
     </div>
   ))
-    

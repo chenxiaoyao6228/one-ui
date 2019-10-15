@@ -1,12 +1,12 @@
 export interface Props {
   prefix?: string;
   params?: object;
-  seperator?: string;
+  separator?: string;
 }
 
 export interface ItemProps {
   prefix?: string;
-  seperator?: string;
+  separator?: string;
   href?: string;
   childLen?: number;
 }

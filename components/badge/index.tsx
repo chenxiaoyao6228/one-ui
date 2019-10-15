@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
-import { PropsType } from './PropTypes';
+import React from 'react';
+import { Props } from './PropTypes';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import cls from 'classnames';
 import './styles/index.less';
 
-export default class Badge extends Component<PropsType, {}> {
-  static defaultProps = {
-    overflowCount: 99,
-    showZero: false,
-  };
-  renderBadge = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const { className, children, count, overflowCount, showZero, style, dot, onClick } = this.props;
+const Badge: React.FC<Props> = ({
+  className,
+  children,
+  count,
+  style,
+  dot,
+  onClick,
+  overflowCount = 99,
+  showZero = false,
+}) => {
+  const renderBadge = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('badge');
     const classes = cls(`${prefixCls}-inner`, { [`${prefixCls}-dot`]: dot }, className);
     return (
@@ -20,13 +24,13 @@ export default class Badge extends Component<PropsType, {}> {
             {count > overflowCount ? overflowCount + '+' : count}
           </span>
         ) : (
-          ''
-        )}
+            ''
+          )}
         {children}
       </div>
     );
   }
-  render() {
-    return <ConfigConsumer>{this.renderBadge}</ConfigConsumer>;
-  }
+  return <ConfigConsumer>{renderBadge}</ConfigConsumer>;
 }
+
+export default Badge

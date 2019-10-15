@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { AvatarPropsType } from './PropTypes';
+import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import React from 'react';
+import { Props } from './PropTypes';
 import { OneUserOutline } from '../icon';
 import cls from 'classnames';
 import './styles/index.less';
 
-export default class Avatar extends Component<AvatarPropsType, {}> {
-  static defaultProps = {
-    prefix: 'one-avatar',
-  };
-  render() {
-    const { prefix, size, shape, className, style, src } = this.props;
+const Avatar: React.FC<Props> = ({
+  prefix, size, shape, className, style, src, children
+}) => {
+  const renderAvatar = ({ getPrefixCls }: ConfigConsumerProps) => {
+    const prefixCls = getPrefixCls('avatar');
+    if (!prefix) prefix = prefixCls
     const sizeStyle: React.CSSProperties =
       typeof size === 'number'
         ? {
-            width: `${size}px`,
-            height: `${size}px`,
-            lineHeight: `${size}px`,
-            fontSize: size / 2,
-          }
+          width: `${size}px`,
+          height: `${size}px`,
+          lineHeight: `${size}px`,
+          fontSize: size / 2,
+        }
         : {};
-    let children = this.props.children;
     let hasImg = !!src;
     let hasText = !!children;
     if (!hasImg && !hasText) {
@@ -46,4 +46,7 @@ export default class Avatar extends Component<AvatarPropsType, {}> {
       </span>
     );
   }
+  return <ConfigConsumer>{renderAvatar}</ConfigConsumer>;
 }
+
+export default Avatar

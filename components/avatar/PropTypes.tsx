@@ -1,14 +1,14 @@
-export interface AvatarPropsType {
+export interface Props {
   prefix?: string;
   shape?: 'circle' | 'square';
   size?: number | 'sm' | 'md' | 'lg';
   src?: string;
   alt?: string;
-  style?: object;
+  style?: React.CSSProperties;
   className?: string;
 }
 
-export interface AvatarState {
+export interface State {
   scale: number;
   isImgExist: boolean;
 }

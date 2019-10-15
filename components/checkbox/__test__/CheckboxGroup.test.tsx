@@ -2,9 +2,8 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { CheckboxGroup } from '../index';
 
-beforeEach(() => {
-  cleanup()
-})
+beforeEach(cleanup)
+
 test('should work basically', () => {
   const onChange = jest.fn()
   const { getByDisplayValue } = render(

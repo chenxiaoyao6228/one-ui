@@ -5,10 +5,10 @@ import './styles/breadcrumb.less';
 
 storiesOf('Breadcrumb', module)
   .add('breadcrumb', () => {
-    const navList = ['一级导航', '二级导航', '三级导航'];
+    const navList = ['Home', 'ArticleList', 'ArticleDetail'];
     return (
       <div className="demo">
-        <h2>默认分隔符</h2>
+        <h2>Default Seperator</h2>
         <Breadcrumb>
           {navList.map(item => {
             return (<Breadcrumb.Item key={item}>
@@ -18,12 +18,13 @@ storiesOf('Breadcrumb', module)
           })
           }
         </Breadcrumb>
-        <h2>自定义分隔符</h2>
-        <Breadcrumb seperator=">">
+        <h2>Custom separator</h2>
+        <Breadcrumb separator=">">
           {navList.map(item => {
-            return (<Breadcrumb.Item key={item}>
-              <a href="#">{item}</a>
-            </Breadcrumb.Item>
+            return (
+              <Breadcrumb.Item key={item}>
+                <a href="#">{item}</a>
+              </Breadcrumb.Item>
             );
           })
           }
