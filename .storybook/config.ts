@@ -2,10 +2,22 @@ import { configure } from '@storybook/react';
 // import '@storybook/addon-console';
 
 // automatically import all files ending in *.stories.tsx
-const req = require.context('../stories', true, /\.stories\.tsx$/);
+require.context('../stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
-  req.keys().forEach(req);
-  // require('../stories/backtop.stories.tsx');
+  // intro
+  require('../stories/intro')
+
+  // common
+  require('../stories/common');
+
+  // layout
+  require('../stories/layout');
+
+  // navigation
+  require('../stories/navigation');
+
+  // dataDisplay
+  require('../stories/dataDisplay');
 }
 configure(loadStories, module);

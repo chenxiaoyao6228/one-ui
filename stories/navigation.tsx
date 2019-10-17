@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Breadcrumb from '../components/breadcrumb';
 import './styles/breadcrumb.less';
 
-storiesOf('Breadcrumb', module)
+storiesOf('Navigation', module)
   .add('breadcrumb', () => {
     const navList = ['Home', 'ArticleList', 'ArticleDetail'];
     return (

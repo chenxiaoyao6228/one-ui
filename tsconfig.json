@@ -33,7 +33,7 @@
     "esModuleInterop": true
   },
   "include": [
-    "components/**/*.tsx"
+    "components/**/*.tsx", "components/draggable/index.jsx"
   ],
   "exclude": [
     "node_modules",

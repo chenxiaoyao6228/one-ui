@@ -4,11 +4,53 @@ import { Row, Col } from '../components/grid';
 import Badge from '../components/badge';
 import Button from '../components/button';
 import './styles/badge.less';
-// import cls from 'classnames';
 import './styles/grid.less';
 
-storiesOf('Badge', module)
-  .add('badge', () => (
+import Avatar from '../components/avatar';
+import './styles/avatar.less';
+import './styles/avatar.less';
+import Draggable from './../components/draggable/index';
+
+
+storiesOf('Data Display', module)
+  .add('draggable', () => {
+    return <Draggable>
+      <div className="box">draggable</div>
+    </Draggable>
+  })
+  .add('avatar', () => {
+    return (
+      <div className="demo">
+        <h2>Basic</h2>
+        <div>
+          <Avatar size='sm' shape='square' />
+          <Avatar shape='square' />
+          <Avatar size='lg' shape='square' />
+          <Avatar size={64} shape='square' />
+        </div>
+        <div>
+          <Avatar size='sm' shape='circle' />
+          <Avatar shape='circle' />
+          <Avatar size='lg' shape='circle' />
+          <Avatar size={64} shape='circle' />
+        </div>
+        <h2>Image, Character</h2>
+        <div>
+          <Avatar size='sm' shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+          <Avatar src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+          <Avatar size='lg' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+          <Avatar size={64} shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+        </div>
+        <div>
+          <Avatar size='sm' shape='square' >U</Avatar>
+          <Avatar shape='square' style={{ background: '#46c37b' }}>U</Avatar>
+          <Avatar size='lg' shape='square' >U</Avatar>
+          <Avatar size={64} shape='square' style={{ background: '#46c37b' }} >U</Avatar>
+        </div>
+      </div>
+    )
+  })
+  .add('Badge', () => (
     <div className='demo'>
       <Row>
         <Col span={12}>
@@ -36,9 +78,9 @@ storiesOf('Badge', module)
                 <Button type="info">Unread message</Button>
               </Badge>
             </Col>
-              <Badge count={1000} overflowCount={999}>
-                <Button type="info">Unread message</Button>
-              </Badge>
+            <Badge count={1000} overflowCount={999}>
+              <Button type="info">Unread message</Button>
+            </Badge>
             <Col span={8}>
 
             </Col>
@@ -48,7 +90,7 @@ storiesOf('Badge', module)
           </Row>
         </Col>
       </Row>
-      <Row style={{marginTop: 50}}>
+      <Row style={{ marginTop: 50 }}>
         <Col span={12}>
           <h2>custom style</h2>
           <Row>
@@ -58,7 +100,7 @@ storiesOf('Badge', module)
               </Badge>
             </Col>
             <Col span={8}>
-              <Badge count={10} style={{ backgroundColor: '#745e2e'}}>
+              <Badge count={10} style={{ backgroundColor: '#745e2e' }}>
                 <Button type="info">Unread message</Button>
               </Badge>
             </Col>
@@ -86,17 +128,17 @@ storiesOf('Badge', module)
           </Row>
         </Col>
       </Row>
-      <Row style={{marginTop: 50}}>
+      <Row style={{ marginTop: 50 }}>
         <Col span={12}>
           <h2>Callback</h2>
           <Row>
             <Col span={8}>
-              <Badge count={10} onClick={(e)=> alert('Read message')}>
+              <Badge count={10} onClick={(e) => alert('Read message')}>
                 <Button type="info">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
-              <Badge count={0} showZero onClick={(e)=> alert('Read message')}>
+              <Badge count={0} showZero onClick={(e) => alert('Read message')}>
                 <Button type="info">No Unread message</Button>
               </Badge>
             </Col>

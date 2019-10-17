@@ -4,7 +4,7 @@ import { Row, Col } from '../components/grid';
 import cls from 'classnames';
 import './styles/grid.less';
 
-storiesOf('Grid', module)
+storiesOf('Layout', module)
   .add('grid', () => (
     <div className='demo'>
       <h2>Basic Grid</h2>
@@ -70,4 +70,7 @@ storiesOf('Grid', module)
         <Col className='demo-col' span={8} xs={{ span: 4 }} md={{ span: 12 }}>col-20, md-12,xs-4</Col>
       </Row >
     </div >
-  ));
+  ))
+  .add('container', () => (
+    <div>container</div>
+  ))
