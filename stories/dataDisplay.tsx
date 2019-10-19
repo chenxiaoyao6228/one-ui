@@ -14,8 +14,16 @@ import Draggable from './../components/draggable/index';
 
 storiesOf('Data Display', module)
   .add('draggable', () => {
-    return <Draggable>
-      <div className="box">draggable</div>
+    const start = (e: any, ui: any) => {
+      console.log(ui);
+    }
+    const drag = (e: any, ui: any) => {
+      console.log(ui);
+    }
+    return <Draggable onStart={start} onDrag={drag}>
+      <div className="box" style={{ background: 'red' }}>one</div>
+      {/* <div className="box">two</div>
+      <div className="box">three</div> */}
     </Draggable>
   })
   .add('avatar', () => {

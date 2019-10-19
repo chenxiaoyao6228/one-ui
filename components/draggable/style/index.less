@@ -3,6 +3,7 @@
 @prefixCls: ~'@{prefix}-draggable';
 .@{prefixCls} {
   cursor: move;
+  position: relative;
   & > .box {
       background: #fff;
       border: 1px solid #999;
@@ -11,6 +12,8 @@
       height: 180px;
       margin: 10px;
       padding: 10px;
-      float: left;
+      position: absolute;
+      left: 500;
+      top: 500
     }  
 }
