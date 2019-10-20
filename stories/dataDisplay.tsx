@@ -20,11 +20,25 @@ storiesOf('Data Display', module)
     const drag = (e: any, ui: any) => {
       console.log(ui);
     }
-    return <Draggable onStart={start} onDrag={drag}>
-      <div className="box" style={{ background: 'red' }}>one</div>
-      {/* <div className="box">two</div>
-      <div className="box">three</div> */}
-    </Draggable>
+    return (
+      <div>
+        <Draggable>
+          <div className="box">can be dragged in both direction</div>
+        </Draggable>
+        {/* <Draggable axis="x">
+          <div className="box">can be dragged in horizontally</div>
+        </Draggable>
+        <Draggable axis="y">
+          <div className="box">can be dragged in vertically</div>
+        </Draggable>
+        <Draggable handle="strong">
+          <div className="box">
+            <strong>Drag here</strong>
+            <div>You must click my handle to drag me</div>
+          </div>
+        </Draggable> */}
+      </div>
+    )
   })
   .add('avatar', () => {
     return (

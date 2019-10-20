@@ -31,62 +31,68 @@ const Draggable: React.FC<Props> = ({
   ...attr
 }) => {
   const [dragging, setDragging] = useState(false)
+  const [dragged, setDragged] = useState(false)
   const [pos, setPos] = useState({
-    startX: 0, startY: 0,
-    offsetX: 0, offsetY: 0,
-    clientX: 0, clientY: 0
+    originX: 0, originY: 0,
+    mouseStartX: 0, mouseStartY: 0,
+    deltaX: 0, deltaY: 0
   })
   const createUIEvent = () => {
     return {
-      top: pos.clientY,
-      left: pos.clientX
+      deltaX: pos.deltaX,
+      deltaY: pos.deltaY
     }
   }
   const handleMouseDown = (e: any): void => {
     e.preventDefault()
-    setPos({
-      ...pos,
-      offsetX: e.clientX,
-      offsetY: e.clientY,
-      startX: parseInt(e.currentTarget.style.left, 10) || 0,
-      startY: parseInt(e.currentTarget.style.top, 10) || 0
-    });
+    const mouseStartX = parseInt(e.pageX, 10)
+    const mouseStartY = parseInt(e.pageY, 10)
+    if (!dragged) {
+      setPos({
+        ...pos,
+        originX: mouseStartX,
+        originY: mouseStartY,
+        mouseStartX: mouseStartX,
+        mouseStartY: mouseStartY
+      });
+    }
     onStart && onStart(e, createUIEvent())
+    setDragging(true)
   }
   const handleMouseMove = (e: any) => {
+    if (!dragging) return
+    const mouseX = parseInt(e.pageX, 10)
+    const mouseY = parseInt(e.pageY, 10)
     setPos({
       ...pos,
-      clientX: pos.startX + (e.clientX - pos.offsetX),
-      clientY: pos.startY + (e.clientY - pos.offsetY)
-    })
+      deltaX: mouseX - pos.mouseStartX,
+      deltaY: mouseY - pos.mouseStartY
+    });
     onDrag && onDrag(e, createUIEvent())
   }
   const handleMouseUp = (e: any): void => {
     e.preventDefault()
-    if (!dragging) return
-    setDragging(true)
+    setDragging(false)
+    setDragged(true)
     onStop && onStop(e, createUIEvent())
   }
 
-
   const renderDraggable = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('draggable');
-    let styles = {
-      top: canDragY(axis) ? pos.clientY : pos.startY,
-      left: canDragX(axis) ? pos.clientX : pos.startX
-    }
-    const newChildren = React.Children.map(children, (c: any) => {
-      console.log(c.style)
-      return React.cloneElement(c, {
-        className: classnames(prefixCls),
-        style: styles,
+    const styles = {
+      transform: `translate(${pos.deltaX}px, ${pos.deltaY}px)`
+    };
+    const newChildren = React.Children.map(children, (child: any) => {
+      // extend pros for child
+      return React.cloneElement(child, {
+        className: classnames(prefixCls, child.props.className),
+        style: { ...child.props.style, ...styles },
         onMouseUp: handleMouseUp,
         onMouseMove: handleMouseMove,
         onMouseDown: handleMouseDown,
         ...attr
       })
     })
-    // console.log(newChildren);
     return (newChildren)
   }
   return (
