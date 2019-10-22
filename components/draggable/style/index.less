@@ -3,9 +3,21 @@
 @prefixCls: ~'@{prefix}-draggable';
 .@{prefixCls} {
   cursor: move;
+  user-select: none;
+  &-mask{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    cursor: move;
+    background-color: rgba(250, 0, 0, 0)
+  }
 }
 
 .box {
+  display: inline-block;
       background: #fff;
       border: 1px solid #999;
       border-radius: 3px;

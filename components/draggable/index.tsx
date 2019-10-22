@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 
 import './style/index.less';
 import { Props } from './PropsTypes';
@@ -8,13 +8,15 @@ import classnames from 'classnames'
 const noop = () => { }
 
 function canDragY(axis: string) {
-  return axis === 'both' ||
-    axis === 'y';
+  return axis === 'both' || axis === 'y';
 }
 
 function canDragX(axis: string) {
-  return axis === 'both' ||
-    axis === 'x';
+  return axis === 'both' || axis === 'x';
+}
+
+function int(floatNum: number) {
+  return Math.floor(floatNum)
 }
 
 const Draggable: React.FC<Props> = ({
@@ -30,70 +32,98 @@ const Draggable: React.FC<Props> = ({
   children,
   ...attr
 }) => {
+  const ref = useRef(null)
   const [dragging, setDragging] = useState(false)
   const [dragged, setDragged] = useState(false)
   const [pos, setPos] = useState({
     originX: 0, originY: 0,
+    totalMoveX: 0, totalMoveY: 0,
     mouseStartX: 0, mouseStartY: 0,
-    deltaX: 0, deltaY: 0
+    mouseMoveX: 0, mouseMoveY: 0
   })
   const createUIEvent = () => {
     return {
-      deltaX: pos.deltaX,
-      deltaY: pos.deltaY
+      deltaX: pos.mouseMoveX,
+      deltaY: pos.mouseMoveY
     }
   }
   const handleMouseDown = (e: any): void => {
     e.preventDefault()
-    const mouseStartX = parseInt(e.pageX, 10)
-    const mouseStartY = parseInt(e.pageY, 10)
+    const mouseStartX = int(e.pageX)
+    const mouseStartY = int(e.pageY)
     if (!dragged) {
       setPos({
         ...pos,
         originX: mouseStartX,
         originY: mouseStartY,
-        mouseStartX: mouseStartX,
-        mouseStartY: mouseStartY
       });
     }
+    setPos({
+      ...pos,
+      mouseStartX: mouseStartX,
+      mouseStartY: mouseStartY
+    })
     onStart && onStart(e, createUIEvent())
     setDragging(true)
   }
   const handleMouseMove = (e: any) => {
+    e.preventDefault()
     if (!dragging) return
-    const mouseX = parseInt(e.pageX, 10)
-    const mouseY = parseInt(e.pageY, 10)
+    const mouseMoveX = int(e.pageX) - pos.mouseStartX
+    const mouseMoveY = int(e.pageY) - pos.mouseStartY
     setPos({
       ...pos,
-      deltaX: mouseX - pos.mouseStartX,
-      deltaY: mouseY - pos.mouseStartY
+      mouseMoveX: mouseMoveX,
+      mouseMoveY: mouseMoveY
     });
     onDrag && onDrag(e, createUIEvent())
   }
-  const handleMouseUp = (e: any): void => {
+  const handleMouseUpOrOut = (e: any): void => {
     e.preventDefault()
     setDragging(false)
     setDragged(true)
+    setPos({
+      ...pos,
+      totalMoveX: pos.totalMoveX + pos.mouseMoveX,
+      totalMoveY: pos.totalMoveY + pos.mouseMoveY,
+      mouseMoveX: 0,
+      mouseMoveY: 0
+    })
     onStop && onStop(e, createUIEvent())
   }
 
   const renderDraggable = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('draggable');
+    const translateX = canDragX(axis) ? pos.totalMoveX + pos.mouseMoveX : 0
+    const translateY = canDragY(axis) ? pos.totalMoveY + pos.mouseMoveY : 0
     const styles = {
-      transform: `translate(${pos.deltaX}px, ${pos.deltaY}px)`
+      transform: `translate(${translateX}px, ${translateY}px)`,
+      zIndex: dragging ? 100 : null,
+      position: dragging ? 'relative' : null
     };
     const newChildren = React.Children.map(children, (child: any) => {
       // extend pros for child
       return React.cloneElement(child, {
         className: classnames(prefixCls, child.props.className),
         style: { ...child.props.style, ...styles },
-        onMouseUp: handleMouseUp,
-        onMouseMove: handleMouseMove,
+        ref: ref,
         onMouseDown: handleMouseDown,
         ...attr
       })
     })
-    return (newChildren)
+    return (
+      <Fragment>
+        {newChildren}
+        {dragging ?
+          <div
+            className={`${prefixCls}-mask`}
+            onMouseUp={handleMouseUpOrOut}
+            onMouseMove={handleMouseMove}
+            onMouseOut={handleMouseUpOrOut}
+          ></div> : ''
+        }
+      </Fragment >
+    )
   }
   return (
     <ConfigConsumer>{renderDraggable}</ConfigConsumer>
