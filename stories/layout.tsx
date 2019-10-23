@@ -71,6 +71,3 @@ storiesOf('Layout', module)
       </Row >
     </div >
   ))
-  .add('container', () => (
-    <div>container</div>
-  ))

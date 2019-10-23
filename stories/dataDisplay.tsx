@@ -3,13 +3,16 @@ import { storiesOf } from '@storybook/react';
 import { Row, Col } from '../components/grid';
 import Badge from '../components/badge';
 import Button from '../components/button';
+import Draggable from './../components/draggable/index';
+import Affix from '../components/affix';
+import Backtop from '../components/backtop';
 import './styles/badge.less';
 import './styles/grid.less';
-
-import Avatar from '../components/avatar';
-import './styles/avatar.less';
-import './styles/avatar.less';
-import Draggable from './../components/draggable/index';
+import './styles/draggable.less';
+import './styles/affix.less';
+import './styles/backtop.less';
+// import Avatar from '../components/avatar';
+// import './styles/avatar.less';
 
 
 storiesOf('Data Display', module)
@@ -20,8 +23,11 @@ storiesOf('Data Display', module)
     const drag = (e: any, ui: any) => {
       console.log(ui);
     }
+    const stop = (e: any, ui: any) => {
+      console.log(ui);
+    }
     return (
-      <div>
+      <div className="demo">
         <Draggable>
           <div className="box">can be dragged in both direction</div>
         </Draggable>
@@ -34,44 +40,12 @@ storiesOf('Data Display', module)
         <Draggable axis="none">
           <div className="box">can not be dragged</div>
         </Draggable>
-        <Draggable handle="strong">
+        <Draggable handle="button">
           <div className="box">
-            <strong>Drag here</strong>
+            <Button>Drag here</Button>
             <div>You must click my handle to drag me</div>
           </div>
         </Draggable>
-      </div>
-    )
-  })
-  .add('avatar', () => {
-    return (
-      <div className="demo">
-        <h2>Basic</h2>
-        <div>
-          <Avatar size='sm' shape='square' />
-          <Avatar shape='square' />
-          <Avatar size='lg' shape='square' />
-          <Avatar size={64} shape='square' />
-        </div>
-        <div>
-          <Avatar size='sm' shape='circle' />
-          <Avatar shape='circle' />
-          <Avatar size='lg' shape='circle' />
-          <Avatar size={64} shape='circle' />
-        </div>
-        <h2>Image, Character</h2>
-        <div>
-          <Avatar size='sm' shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
-          <Avatar src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
-          <Avatar size='lg' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
-          <Avatar size={64} shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
-        </div>
-        <div>
-          <Avatar size='sm' shape='square' >U</Avatar>
-          <Avatar shape='square' style={{ background: '#46c37b' }}>U</Avatar>
-          <Avatar size='lg' shape='square' >U</Avatar>
-          <Avatar size={64} shape='square' style={{ background: '#46c37b' }} >U</Avatar>
-        </div>
       </div>
     )
   })
@@ -83,12 +57,12 @@ storiesOf('Data Display', module)
           <Row>
             <Col span={8}>
               <Badge count={10}>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
               <Badge count={0} showZero>
-                <Button type="info">No Unread message</Button>
+                <Button type="primary">No Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
@@ -100,11 +74,11 @@ storiesOf('Data Display', module)
           <Row>
             <Col span={8}>
               <Badge count={1000}>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Badge count={1000} overflowCount={999}>
-              <Button type="info">Unread message</Button>
+              <Button type="primary">Unread message</Button>
             </Badge>
             <Col span={8}>
 
@@ -121,12 +95,12 @@ storiesOf('Data Display', module)
           <Row>
             <Col span={8}>
               <Badge count={10} style={{ backgroundColor: '#52c41a' }}>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
               <Badge count={10} style={{ backgroundColor: '#745e2e' }}>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
@@ -139,7 +113,7 @@ storiesOf('Data Display', module)
           <Row>
             <Col span={8}>
               <Badge dot>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8} >
@@ -159,12 +133,12 @@ storiesOf('Data Display', module)
           <Row>
             <Col span={8}>
               <Badge count={10} onClick={(e) => alert('Read message')}>
-                <Button type="info">Unread message</Button>
+                <Button type="primary">Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
               <Badge count={0} showZero onClick={(e) => alert('Read message')}>
-                <Button type="info">No Unread message</Button>
+                <Button type="primary">No Unread message</Button>
               </Badge>
             </Col>
             <Col span={8}>
@@ -173,4 +147,75 @@ storiesOf('Data Display', module)
         </Col>
       </Row>
     </div>
-  ));
+  ))
+  .add('Affix', () => (
+    <div className='demo' style={{ minHeight: 3000 }}>
+      <Row>
+        <Col span={24} style={{ height: 200 }} ></Col>
+        <Col span={8}>
+          <h2>Basic Affix</h2>
+          <Affix>
+            <Button type='primary'>Basic Affix</Button>
+          </Affix>
+        </Col>
+        <Col span={8}>
+          <h2>With 120px OffsetTop </h2>
+          <Affix offsetTop={120}>
+            <Button type='primary'>With 120px OffsetTop</Button>
+          </Affix>
+        </Col>
+        <Col span={8}>
+          <h2>With Callback </h2>
+          <Affix offsetTop={240} callback={(affixed) => { console.log('invoked the callback function in With Callback') }}>
+            <Button type='primary' >With Callback</Button>
+          </Affix>
+        </Col>
+      </Row>
+    </div>
+  ))
+  .add('Backtop', () => (
+    <div className='demo' style={{ minHeight: 3000 }}>
+      <Row>
+        <Col span={12}>
+          <h2>Basic backtop</h2>
+          <p>Scroll down the page to see the backtop button</p>
+          <Backtop>
+            <Button type="primary">Top</Button>
+          </Backtop>
+        </Col>
+      </Row>
+    </div>
+  ))
+
+  // .add('avatar', () => {
+  //   return (
+  //     <div className="demo">
+  //       <h2>Basic</h2>
+  //       <div>
+  //         <Avatar size='sm' shape='square' />
+  //         <Avatar shape='square' />
+  //         <Avatar size='lg' shape='square' />
+  //         <Avatar size={64} shape='square' />
+  //       </div>
+  //       <div>
+  //         <Avatar size='sm' shape='circle' />
+  //         <Avatar shape='circle' />
+  //         <Avatar size='lg' shape='circle' />
+  //         <Avatar size={64} shape='circle' />
+  //       </div>
+  //       <h2>Image, Character</h2>
+  //       <div>
+  //         <Avatar size='sm' shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+  //         <Avatar src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+  //         <Avatar size='lg' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+  //         <Avatar size={64} shape='circle' src="https://tse4-mm.cn.bing.net/th?id=OIP.vFJO1JF-8ZC6uCEnT6_t6QHaHa&w=150&h=150&c=7&o=5&pid=1.7" />
+  //       </div>
+  //       <div>
+  //         <Avatar size='sm' shape='square' >U</Avatar>
+  //         <Avatar shape='square' style={{ background: '#46c37b' }}>U</Avatar>
+  //         <Avatar size='lg' shape='square' >U</Avatar>
+  //         <Avatar size={64} shape='square' style={{ background: '#46c37b' }} >U</Avatar>
+  //       </div>
+  //     </div>
+  //   )
+  // })

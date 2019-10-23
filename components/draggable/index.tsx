@@ -5,19 +5,7 @@ import { Props } from './PropsTypes';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import classnames from 'classnames'
 
-const noop = () => { }
-
-function canDragY(axis: string) {
-  return axis === 'both' || axis === 'y';
-}
-
-function canDragX(axis: string) {
-  return axis === 'both' || axis === 'x';
-}
-
-function int(floatNum: number) {
-  return Math.floor(floatNum)
-}
+import { noop, int, canDragX, canDragY, matchSelector } from './utils'
 
 const Draggable: React.FC<Props> = ({
   axis = 'both',
@@ -49,6 +37,7 @@ const Draggable: React.FC<Props> = ({
   }
   const handleMouseDown = (e: any): void => {
     e.preventDefault()
+    if (handle && !matchSelector(e.target as Element, handle)) return
     const mouseStartX = int(e.pageX)
     const mouseStartY = int(e.pageY)
     if (!dragged) {

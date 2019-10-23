@@ -6,7 +6,7 @@ require.context('../stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
   // intro
-  require('../stories/intro')
+  // require('../stories/intro')
 
   // common
   require('../stories/common');
