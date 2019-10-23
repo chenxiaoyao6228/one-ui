@@ -55,6 +55,9 @@ storiesOf('Data Display', module)
         <Draggable onStart={start} onDrag={drag} onStop={stop}>
           <div className="box">with callback event attached</div>
         </Draggable>
+        <Draggable zIndex={100}>
+          <div className="box">zIndex support</div>
+        </Draggable>
       </div>
     )
   })

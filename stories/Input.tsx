@@ -53,7 +53,7 @@ class App extends Component<any, any> {
   }
 }
 
-storiesOf('Checkbox', module).add('checkbox',
+storiesOf('Input', module).add('checkbox',
   () => {
     const plainOptions = ['Apple', 'Pear', 'Orange'];
     const options = [

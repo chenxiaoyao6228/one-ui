@@ -11,6 +11,9 @@ function loadStories() {
   // common
   require('../stories/common');
 
+  // input
+  require('../stories/input')
+
   // layout
   require('../stories/layout');
 
