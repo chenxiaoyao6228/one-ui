@@ -37,7 +37,9 @@ const Draggable: React.FC<Props> = ({
   }
   const handleMouseDown = (e: any): void => {
     e.preventDefault()
-    if (handle && !matchSelector(e.target as Element, handle)) return
+    if ((handle && !matchSelector(e.target as Element, handle)) ||
+      (cancel && matchSelector(e.target as Element, cancel))
+    ) return
     const mouseStartX = int(e.pageX)
     const mouseStartY = int(e.pageY)
     if (!dragged) {

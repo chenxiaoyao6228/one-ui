@@ -29,22 +29,31 @@ storiesOf('Data Display', module)
     return (
       <div className="demo">
         <Draggable>
-          <div className="box">can be dragged in both direction</div>
+          <div className="box">Can be dragged in both direction</div>
         </Draggable>
         <Draggable axis="x">
-          <div className="box">can be dragged in horizontally</div>
+          <div className="box">Can be dragged in horizontally</div>
         </Draggable>
         <Draggable axis="y">
-          <div className="box">can be dragged in vertically</div>
+          <div className="box">Can be dragged in vertically</div>
         </Draggable>
         <Draggable axis="none">
-          <div className="box">can not be dragged</div>
+          <div className="box">Can not be dragged</div>
         </Draggable>
         <Draggable handle="button">
           <div className="box">
             <Button>Drag here</Button>
             <div>You must click my handle to drag me</div>
           </div>
+        </Draggable>
+        <Draggable cancel=".cancel">
+          <div className="box">
+            <Button className="cancel" style={{ cursor: 'move' }}>Can not drag here</Button>
+            <div>Can be dragged here</div>
+          </div>
+        </Draggable>
+        <Draggable onStart={start} onDrag={drag} onStop={stop}>
+          <div className="box">with callback event attached</div>
         </Draggable>
       </div>
     )
