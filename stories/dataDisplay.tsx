@@ -203,7 +203,9 @@ storiesOf('Data Display', module)
     </div>
   ))
   .add('Tree', () => (
-    <Tree data={data}></Tree>
+    <div className="demo">
+      <Tree data={data}></Tree>
+    </div>
   ))
 
   // .add('avatar', () => {

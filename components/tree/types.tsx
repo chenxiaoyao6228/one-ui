@@ -7,11 +7,16 @@ export interface Props {
   data: TreeData
 }
 
+interface Collapse {
+  (key: string): void;
+}
 export interface NodeProps {
   prefix?: string;
   className?: string;
   style?: React.CSSProperties;
   data: TreeData
+  onCollapse?: Collapse;
+  onCheck?: Collapse
 }
 
 export interface TreeData {
