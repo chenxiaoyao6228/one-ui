@@ -6,6 +6,8 @@ import Button from '../components/button';
 import Draggable from './../components/draggable/index';
 import Affix from '../components/affix';
 import Backtop from '../components/backtop';
+import Tree from '../components/tree';
+import data from './utils/data';
 import './styles/badge.less';
 import './styles/grid.less';
 import './styles/draggable.less';
@@ -28,6 +30,7 @@ storiesOf('Data Display', module)
     }
     return (
       <div className="demo">
+        <h2>Axis</h2>
         <Draggable>
           <div className="box">Can be dragged in both direction</div>
         </Draggable>
@@ -40,6 +43,7 @@ storiesOf('Data Display', module)
         <Draggable axis="none">
           <div className="box">Can not be dragged</div>
         </Draggable>
+        <h2>Handle, Cancel, Callback, zIndex</h2>
         <Draggable handle="button">
           <div className="box">
             <Button>Drag here</Button>
@@ -197,6 +201,9 @@ storiesOf('Data Display', module)
         </Col>
       </Row>
     </div>
+  ))
+  .add('Tree', () => (
+    <Tree data={data}></Tree>
   ))
 
   // .add('avatar', () => {

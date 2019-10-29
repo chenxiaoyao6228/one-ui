@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Button from '../components/button';
 import { Row, Col } from '../components/grid';
-// import ConfigProvider from '../components/config-provider';
 import './styles/button.less';
 
 storiesOf('Common', module)
@@ -57,4 +56,4 @@ storiesOf('Common', module)
           </Row>
         </div >
       );
-    });
+    })

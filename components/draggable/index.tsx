@@ -3,7 +3,7 @@ import { Props } from './PropsTypes';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import classnames from 'classnames'
 import { noop, int, canDragX, canDragY, matchSelector } from './utils'
-import './style/index.less';
+import './styles/index.less';
 
 const Draggable: React.FC<Props> = ({
   axis = 'both',
