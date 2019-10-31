@@ -29,3 +29,8 @@ export interface TreeData {
   checked?: boolean;
   loading?: boolean
 }
+
+export interface KeyNodeMap {
+  //属性名任意，值是一个TreeData类型
+  [key: string]: TreeData
+}
