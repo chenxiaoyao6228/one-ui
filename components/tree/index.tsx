@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import TreeNode from './TreeNode';
-import { Props, TreeData, KeyNodeMap } from './types';
+import { Props, TreeData, KeyNodeMap } from './PropsTypes';
 import './styles/index.less'
 
-// & { keyNodeMap: KeyNodeMap }
 const Tree: React.FC<Props> = ({ data }) => {
   const [stateData, setStateData] = useState({ data: data })
   let keyNodeMap = {}

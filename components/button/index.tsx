@@ -7,12 +7,12 @@ import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 
 const Button: React.FC<Props> = function ({
   type, size, disabled, block, inverted,
-  className, children, onClick, ...attr
+  children, onClick, ...attr
 }) {
   const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('button');
     const classes = cls(
-      className,
+      // className,
       prefixCls, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${size}`]: size,
@@ -21,9 +21,9 @@ const Button: React.FC<Props> = function ({
       [`${prefixCls}-${type}-inverted`]: inverted,
     });
     return (
-      <button className={classes} onClick={onClick} {...attr} >
+      <Button className={classes} onClick={onClick} {...attr} >
         {children}
-      </button>
+      </Button>
     );
   }
   return <ConfigConsumer>{renderButton}</ConfigConsumer>;

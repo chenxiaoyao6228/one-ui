@@ -9,10 +9,10 @@ import Backtop from '../components/backtop';
 import Tree from '../components/tree';
 import data from './utils/data';
 import './styles/badge.less';
-import './styles/grid.less';
-import './styles/draggable.less';
-import './styles/affix.less';
-import './styles/backtop.less';
+// import './styles/grid.less';
+// import './styles/draggable.less';
+// import './styles/affix.less';
+// import './styles/backtop.less';
 // import Avatar from '../components/avatar';
 // import './styles/avatar.less';
 
@@ -203,7 +203,7 @@ storiesOf('Data Display', module)
     </div>
   ))
   .add('Tree', () => (
-    <div className="demo">
+    <div className="demo" style={{marginTop: 20}}>
       <Tree data={data}></Tree>
     </div>
   ))

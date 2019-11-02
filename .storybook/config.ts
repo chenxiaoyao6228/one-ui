@@ -2,7 +2,7 @@ import { configure } from '@storybook/react';
 // import '@storybook/addon-console';
 
 // automatically import all files ending in *.stories.tsx
-require.context('../stories', true, /\.stories\.tsx$/);
+// require.context('../stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
   // intro

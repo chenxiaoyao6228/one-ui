@@ -1,18 +1,24 @@
 import React from 'react';
-import { NodeProps } from './types';
-import { FaCaretDown, FaCaretRight, FaFolder, FaFolderOpen } from "react-icons/fa";
+import { NodeProps } from './PropsTypes';
+import { FaCaretDown, FaCaretRight, FaFolder, FaFolderOpen, FaFileAlt } from "react-icons/fa";
 
 const TreeNode: React.FC<NodeProps> = ({ data, onCollapse, onCheck }) => {
   let children = data.children;
   return (
     <div className='tree-node'>
       <div className='inner'>
-        <span onClick={() => { onCollapse(data.key) }}>
-          {
-            data.collapsed ? <FaCaretDown /> : <FaCaretRight />
-          }
-        </span>
-        {data.collapsed ? <FaFolderOpen /> : <FaFolder />}
+        {
+          children && children.length > 0 ?
+            <span onClick={() => { onCollapse(data.key) }}>
+              {
+                data.collapsed ? <FaCaretRight /> : <FaCaretDown />
+              }
+            </span> : ''
+        }
+        {data.type === 'folder'
+          ? data.collapsed ? <FaFolder /> : <FaFolderOpen />
+          : <FaFileAlt />
+        }
         <span>{data.name}</span>
       </div>
       {

@@ -13,7 +13,7 @@ const data = {
         {
           name: 'index.html',
           key: '1-1-1',
-          type: 'folder',
+          type: 'file',
           collapsed: false
         }
       ]
