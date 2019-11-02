@@ -12,15 +12,15 @@ function loadStories() {
   require('../stories/common');
 
   // input
-  require('../stories/input')
+  // require('../stories/input')
 
   // layout
-  require('../stories/layout');
+  // require('../stories/layout');
 
   // navigation
-  require('../stories/navigation');
+  // require('../stories/navigation');
 
   // dataDisplay
-  require('../stories/dataDisplay');
+  // require('../stories/dataDisplay');
 }
 configure(loadStories, module);

@@ -1,0 +1,47 @@
+@import '../../styles/index.less';
+
+@prefixCls: ~'@{prefix}-modal';
+.@{prefixCls} {
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    background-color:#606266;
+    filter: ~'alpha(opacity=50)';
+    &-hidden {
+      display: none;
+    }
+  }
+  &-wrapper {
+    z-index: 101;
+    margin: 0 auto;
+    margin-top: 15vh;
+    width: 30%;
+    background: #fff;
+  }
+  &-header {
+    padding: 20px 20px 10px;
+  }
+  &-title {
+    background: red
+  }
+  &-body {
+    padding: 30px 20px;
+    color: #606266;
+    font-size: 14px;
+    word-break: break-all;
+  }
+  &-footer {
+    padding: 10px 20px 20px;
+    text-align: right;
+    box-sizing: border-box;
+    // & > button:first-child{
+    //   margin-right: 10px;
+    // }
+  }
+
+}
