@@ -8,9 +8,24 @@ import useToggle from '../components/utils/hooks/useToggle';
 
 const ModalDemo: React.FC<{}> = ({ }) => {
   const [modal, toggleModal] = useToggle(true);
+  const handleCancel = () => {
+    console.log('cancel event fires');
+  }
+  const handleConfirm = () => {
+    console.log('confirm event fires');
+  }
   return (
     <div>
-      <Modal modal={modal} toggleModal={toggleModal}>
+      <Modal
+        modal={modal}
+        toggleModal={toggleModal}
+        onCancel={handleCancel}
+        onConfirm={handleConfirm}
+        // mask={false}
+        title="Basic Title"
+        cancelText="Cancel"
+        confirmText="Ok"
+      >
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
