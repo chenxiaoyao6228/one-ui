@@ -1,18 +1,29 @@
-import React, { Component } from 'react';
-import { Props } from './PropsTypes';
+import * as React from 'react';
 import cls from 'classnames';
 import './style/index.less';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 
+export interface Props {
+  prefix?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: (e: React.MouseEvent) => void;
+  size?: 'sm' | 'lg';
+  type?: 'primary' | 'warning' | 'success' | 'info' | 'error';
+  block?: boolean;
+  disabled?: boolean;
+  inverted?: boolean;
+}
 
-const Button: React.FC<Props> = function ({
-  type, size, disabled, block, inverted,
+
+const Button: React.FC<Props> = ({
+  type, size, disabled, block, inverted, className,
   children, onClick, ...attr
-}) {
+}) => {
   const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('button');
     const classes = cls(
-      // className,
+      className,
       prefixCls, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${size}`]: size,
@@ -21,12 +32,12 @@ const Button: React.FC<Props> = function ({
       [`${prefixCls}-${type}-inverted`]: inverted,
     });
     return (
-      <Button className={classes} onClick={onClick} {...attr} >
+      <button className={classes} onClick={onClick} {...attr} >
         {children}
-      </Button>
+      </button>
     );
   }
   return <ConfigConsumer>{renderButton}</ConfigConsumer>;
 
 }
-export default Button
+export default Button;

@@ -22,7 +22,7 @@
     "prettier:fix": "prettier --write components/**/*.tsx components/**/*.less",
     "lint": "npm run prettier:fix && npm run tslint:fix  && echo 'Lint complete.'",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --runInBand",
     "test:e2e": "cypress open",
     "release": "semantic-release",
     "storybook": "start-storybook -p 6008",

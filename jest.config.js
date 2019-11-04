@@ -7,5 +7,9 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
   collectCoverageFrom: ['components/*.{js,ts,jsx,tsx}', 'components/**/*.{js,ts,jsx,tsx}'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom', '@testing-library/react/dont-cleanup-after-each']
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom',
+    '@testing-library/jest-dom/extend-expect',
+    '@testing-library/react/dont-cleanup-after-each'
+  ]
 };

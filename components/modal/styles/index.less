@@ -2,7 +2,7 @@
 
 @prefixCls: ~'@{prefix}-modal';
 .@{prefixCls} {
-  &-mask {
+  &-wrapper {
     position: fixed;
     top: 0;
     right: 0;
@@ -16,9 +16,11 @@
       display: none;
     }
   }
-  &-wrapper {
+  &-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 101;
-    margin: 0 auto;
     margin-top: 15vh;
     width: 30%;
     background: #fff;
@@ -27,7 +29,25 @@
     padding: 20px 20px 10px;
   }
   &-title {
-    background: red
+  }
+  &-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 4px;
+    box-sizing: border-box;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-closeBtn {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 20px;
   }
   &-body {
     padding: 30px 20px;
@@ -39,9 +59,9 @@
     padding: 10px 20px 20px;
     text-align: right;
     box-sizing: border-box;
-    // & > button:first-child{
-    //   margin-right: 10px;
-    // }
+    & > button:first-child{
+      margin-right: 10px;
+    }
   }
 
 }
