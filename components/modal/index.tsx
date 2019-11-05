@@ -25,6 +25,7 @@ const Modal: React.FC<Props> = ({
   toggleModal,
   mask = true,
   title = '',
+  centered = false,
   onCancel,
   onConfirm,
   cancelText = '取消',
@@ -46,7 +47,10 @@ const Modal: React.FC<Props> = ({
     const prefixCls = getPrefixCls('modal')
 
     const modalContent = (
-      <div className={`${prefixCls}-content`}>
+      <div className={cls(
+        `${prefixCls}-content`,
+        centered ? `${prefixCls}-content-centered` : null,
+      )}>
         <div className={`${prefixCls}-header`}>
           <span className={`${prefixCls}-title`}>{title}</span>
           <div className={`${prefixCls}-close`} data-testid='modal-cancel' onClick={handleCancelClick}>

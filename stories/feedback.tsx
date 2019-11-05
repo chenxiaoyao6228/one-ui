@@ -19,17 +19,18 @@ const ModalDemo: React.FC<{}> = ({ }) => {
     console.log('confirm event fires');
   }
   return (
-    <div className="demo demo-modal">
+    <div className="demo demo-modal" style={{ minHeight: 2000 }}>
       <h2>Modal</h2>
       <Modal
         modal={modal}
         toggleModal={toggleModal}
         onCancel={handleCancel}
         onConfirm={handleConfirm}
-        // mask={false}
         title="Basic Title"
         cancelText="Cancel"
         confirmText="Ok"
+        // mask={false}
+      // centered
       >
         <p>Some contents...</p>
         <p>Some contents...</p>
