@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useRef } from 'react';
-import { Props } from './PropsTypes';
-import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import React, { Fragment, useState, useRef } from 'react'
+import { Props } from './PropsTypes'
+import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import classnames from 'classnames'
 import { noop, int, canDragX, canDragY, matchSelector } from './utils'
-import './styles/index.less';
+import './styles/index.less'
 
 const Draggable: React.FC<Props> = ({
   axis = 'both',
@@ -22,10 +22,14 @@ const Draggable: React.FC<Props> = ({
   const [dragging, setDragging] = useState(false)
   const [dragged, setDragged] = useState(false)
   const [pos, setPos] = useState({
-    originX: 0, originY: 0,
-    totalMoveX: 0, totalMoveY: 0,
-    mouseStartX: 0, mouseStartY: 0,
-    mouseMoveX: 0, mouseMoveY: 0
+    originX: 0,
+    originY: 0,
+    totalMoveX: 0,
+    totalMoveY: 0,
+    mouseStartX: 0,
+    mouseStartY: 0,
+    mouseMoveX: 0,
+    mouseMoveY: 0
   })
   const createUIEvent = () => {
     return {
@@ -36,17 +40,19 @@ const Draggable: React.FC<Props> = ({
   const handleMouseDown = (e: any): void => {
     e.preventDefault()
     // handle, cancel area will not trigger drag event
-    if ((handle && !matchSelector(e.target as Element, handle)) ||
+    if (
+      (handle && !matchSelector(e.target as Element, handle)) ||
       (cancel && matchSelector(e.target as Element, cancel))
-    ) return
+    )
+      return
     const mouseStartX = int(e.pageX)
     const mouseStartY = int(e.pageY)
     if (!dragged) {
       setPos({
         ...pos,
         originX: mouseStartX,
-        originY: mouseStartY,
-      });
+        originY: mouseStartY
+      })
     }
     setPos({
       ...pos,
@@ -65,7 +71,7 @@ const Draggable: React.FC<Props> = ({
       ...pos,
       mouseMoveX: mouseMoveX,
       mouseMoveY: mouseMoveY
-    });
+    })
     onDrag && onDrag(e, createUIEvent())
   }
   const handleMouseUpOrOut = (e: any): void => {
@@ -84,16 +90,16 @@ const Draggable: React.FC<Props> = ({
   }
 
   const renderDraggable = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const prefixCls = getPrefixCls('draggable');
+    const prefixCls = getPrefixCls('draggable')
     // use last totalMoveX/Y as base case during each mousedown-mouseup period
     // since translate will not memorize your total move
     const translateX = canDragX(axis) ? pos.totalMoveX + pos.mouseMoveX : 0
     const translateY = canDragY(axis) ? pos.totalMoveY + pos.mouseMoveY : 0
     const styles = {
       transform: `translate(${translateX}px, ${translateY}px)`,
-      zIndex: (dragging && !isNaN(zIndex)) ? zIndex : null,
+      zIndex: dragging && !isNaN(zIndex) ? zIndex : null,
       position: dragging ? 'relative' : null
-    };
+    }
     // make sure only accept one child
     React.Children.only(children)
     const newChildren = React.Children.map(children, (child: any) => {
@@ -111,20 +117,20 @@ const Draggable: React.FC<Props> = ({
     return (
       <Fragment>
         {newChildren}
-        {dragging ?
+        {dragging ? (
           <div
             className={`${prefixCls}-mask`}
             onMouseUp={handleMouseUpOrOut}
             onMouseMove={handleMouseMove}
             onMouseOut={handleMouseUpOrOut}
-          ></div> : ''
-        }
-      </Fragment >
+          />
+        ) : (
+          ''
+        )}
+      </Fragment>
     )
   }
-  return (
-    <ConfigConsumer>{renderDraggable}</ConfigConsumer>
-  )
+  return <ConfigConsumer>{renderDraggable}</ConfigConsumer>
 }
 
 export default Draggable

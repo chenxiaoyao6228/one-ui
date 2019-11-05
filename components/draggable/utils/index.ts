@@ -1,11 +1,11 @@
 export const noop = () => { }
 
 export function canDragY(axis: string) {
-  return axis === 'both' || axis === 'y';
+  return axis === 'both' || axis === 'y'
 }
 
 export function canDragX(axis: string) {
-  return axis === 'both' || axis === 'x';
+  return axis === 'both' || axis === 'x'
 }
 
 export function int(floatNum: number) {
@@ -18,14 +18,14 @@ export function isFunction(fn: any): fn is Function {
 
 export function matchSelector(el: any, selector: string): boolean {
   if (isFunction(el.matches)) {
-    return el.matches(selector);
+    return el.matches(selector)
   } else if (isFunction(el.webkitMatchesSelector)) {
-    return el.webkitMatchesSelector(selector);
+    return el.webkitMatchesSelector(selector)
   } else if (isFunction(el.mozMatchesSelector)) {
-    return el.mozMatchesSelector(selector);
+    return el.mozMatchesSelector(selector)
   } else if (isFunction(el.msMatchesSelector)) {
-    return el.msMatchesSelector(selector);
+    return el.msMatchesSelector(selector)
   } else {
-    return el.oMatchesSelector(selector);
+    return el.oMatchesSelector(selector)
   }
 }

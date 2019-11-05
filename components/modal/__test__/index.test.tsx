@@ -1,29 +1,25 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { useToggle } from 'react-use';
+import { useToggle } from 'react-use'
 import Modal from '..'
-
 
 test('test modal', () => {
   const handleCancel = jest.fn()
   const handleConfirm = jest.fn()
-  const ModalTester: React.FC<{}> = ({ }) => {
+  const ModalTester: React.FC<{}> = ({}) => {
     const [modal, toggleModal] = useToggle(false)
     return (
       <>
         <button onClick={toggleModal}>显示弹窗</button>
-        < Modal
-          modal={modal}
-          toggleModal={toggleModal}
-          onCancel={handleCancel}
-          onConfirm={handleConfirm}
-        >
+        <Modal modal={modal} toggleModal={toggleModal} onCancel={handleCancel} onConfirm={handleConfirm}>
           <p>内容</p>
         </Modal>
-      </>)
+      </>
+    )
   }
-  const { getByTestId, getByText } = render(< ModalTester />, { container: document.body })
-  let showBtn, cancelBtn;
+  const { getByTestId, getByText } = render(<ModalTester />, { container: document.body })
+  let showBtn
+  let cancelBtn
   showBtn = getByText('显示弹窗')
 
   // 遮罩层点击关闭弹窗
@@ -67,4 +63,4 @@ test('test modal', () => {
   confirmBtn.click()
   expect(mask).not.toBeInTheDocument()
   expect(handleConfirm).toHaveBeenCalledTimes(1)
-});
+})

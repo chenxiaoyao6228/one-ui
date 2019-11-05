@@ -74,10 +74,7 @@
       "check-open-brace",
       "check-whitespace"
     ],
-    "one-variable-per-declaration": [
-      true,
-      "ignore-for-loop"
-    ],
+    "one-variable-per-declaration": false,
     "quotemark": [
       true,
       "single"
@@ -85,17 +82,10 @@
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "never"
     ],
     "switch-default": true,
-    "trailing-comma": [
-      true,
-      {
-        "singleline": "never",
-        "multiline": "always",
-        "esSpecCompliant": true
-      }
-    ],
+    "trailing-comma": false,
     "triple-equals": [
       true,
       "allow-null-check"
