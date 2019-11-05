@@ -40,11 +40,11 @@ const Modal: React.FC<Props> = ({
     onConfirm && onConfirm(e)
     toggleModal()
   }
+
   const renderModal = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('modal')
 
     const modalContent = (<div className={`${prefixCls}-content`}>
-
       <div className={`${prefixCls}-header`}>
         <span className={`${prefixCls}-title`}>{title}</span>
         <div
@@ -59,11 +59,9 @@ const Modal: React.FC<Props> = ({
         </div>
       </div>
 
-
       <div className={`${prefixCls}-body`} data-testid="modal-body">
         {children}
       </div>
-
 
       <div className={`${prefixCls}-footer`}>
         <Button
@@ -82,12 +80,12 @@ const Modal: React.FC<Props> = ({
       [`${prefixCls}-mask`]: true,
       [`${prefixCls}-mask-hidden`]: !mask
     })
+
     const modalMask = <div
       className={maskClass}
       data-testid="modal-mask"
       onClick={handleCancelClick}
-    >
-    </div>;
+    ></div>
 
     const modalWrapper = (
       <div className={`${prefixCls}-wrapper`}>

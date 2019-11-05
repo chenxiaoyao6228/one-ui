@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
-import './styles/checkbox.less';
 import { Row, Col } from '../components/grid';
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const defaultCheckedList = ['Apple', 'Orange'];
 
-class App extends Component<any, any> {
+
+const stories = storiesOf('Input', module)
+
+// Checkbox
+class CheckboxDemo extends Component<any, any> {
   state = {
     checkedList: defaultCheckedList,
     indeterminate: true,
@@ -53,63 +56,61 @@ class App extends Component<any, any> {
   }
 }
 
-storiesOf('Input', module).add('checkbox',
-  () => {
-    const plainOptions = ['Apple', 'Pear', 'Orange'];
-    const options = [
-      { label: 'Apple', value: 'Apple' },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange' },
-    ];
-    const optionsWithDisabled = [
-      { label: 'Apple', value: 'Apple' },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange', disabled: false },
-    ];
-    return (
-      <div className='demo'>
-        <Row>
-          <Col span={12}>
-            <h2>Basic</h2>
-            <Checkbox checked value='chooseme'>Choose me</Checkbox>
-          </Col>
-          <Col span={12}>
-            <h2>Disabled</h2>
-            <Checkbox disabled value='not allowed'>Not allowed</Checkbox >
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <h2>Checkbox Group</h2>
-            <CheckboxGroup options={plainOptions} />
-          </Col>
-          <Col span={12}>
+stories.add('Checkbox', () => {
+  const plainOptions = ['Apple', 'Pear', 'Orange'];
+  const options = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange' },
+  ];
+  const optionsWithDisabled = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: false },
+  ];
+  return (
+    <div className='demo'>
+      <Row>
+        <Col span={12}>
+          <h2>Basic</h2>
+          <Checkbox checked value='chooseme'>Choose me</Checkbox>
+        </Col>
+        <Col span={12}>
+          <h2>Disabled</h2>
+          <Checkbox disabled value='not allowed'>Not allowed</Checkbox >
+        </Col>
+      </Row>
+      <Row>
+        <Col span={12}>
+          <h2>Checkbox Group</h2>
+          <CheckboxGroup options={plainOptions} />
+        </Col>
+        <Col span={12}>
 
-            <h2>Options As Object</h2>
-            <CheckboxGroup options={options} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <h2>Default Values</h2>
-            <CheckboxGroup options={options} defaultValue={['Apple', 'Pear']} />
-          </Col>
-          <Col span={12}>
-            <h2>Options With Disabled</h2>
-            <CheckboxGroup options={optionsWithDisabled} disabled />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <h2>Select All</h2>
-            <App />
-          </Col>
-          <Col span={12}>
-            <h2>Click Event</h2>
-            <CheckboxGroup options={plainOptions} onChange={(v) => alert(JSON.stringify(v))} />
-          </Col>
-        </Row>
-      </div >
-    );
-  },
-);
+          <h2>Options As Object</h2>
+          <CheckboxGroup options={options} />
+        </Col>
+      </Row>
+      <Row>
+        <Col span={12}>
+          <h2>Default Values</h2>
+          <CheckboxGroup options={options} defaultValue={['Apple', 'Pear']} />
+        </Col>
+        <Col span={12}>
+          <h2>Options With Disabled</h2>
+          <CheckboxGroup options={optionsWithDisabled} disabled />
+        </Col>
+      </Row>
+      <Row>
+        <Col span={12}>
+          <h2>Select All</h2>
+          <CheckboxDemo />
+        </Col>
+        <Col span={12}>
+          <h2>Click Event</h2>
+          <CheckboxGroup options={plainOptions} onChange={(v) => alert(JSON.stringify(v))} />
+        </Col>
+      </Row>
+    </div >
+  );
+});
