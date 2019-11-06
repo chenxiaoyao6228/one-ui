@@ -4,7 +4,7 @@ export interface PropsType {
   prefix?: string
   style?: React.CSSProperties
   className?: string
-  current?: string
+  current?: number
   pageSize?: number
   activeIndex?: number
   total: number

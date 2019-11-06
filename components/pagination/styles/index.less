@@ -51,6 +51,54 @@
     }
   }
 
+  &-jump-prev,
+  &-jump-next {
+    outline: 0;
+    .@{prefixCls}-item-container {
+      position: relative;
+
+      .@{prefixCls}-item-link-icon {
+        color: @primary-color;
+        letter-spacing: -1px;
+        opacity: 0;
+        transition: all 0.2s;
+        &-svg {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+        }
+      }
+
+      .@{prefixCls}-item-ellipsis {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        margin: auto;
+        color: @info-color;
+        letter-spacing: 2px;
+        text-align: center;
+        text-indent: 0.13em;
+        opacity: 1;
+        transition: all 0.2s;
+      }
+    }
+
+    &:focus,
+    &:hover {
+      .@{prefixCls}-item-link-icon {
+        opacity: 1;
+      }
+      .@{prefixCls}-item-ellipsis {
+        opacity: 0;
+      }
+    }
+  }
+
   &-prev,
   &-jump-prev,
   &-jump-next {
@@ -64,7 +112,7 @@
     display: inline-block;
     min-width: @pagination-item-size;
     height: @pagination-item-size;
-    color: #fff;
+    color:  @text-color;
     font-family: @pagination-font-family;
     line-height: @pagination-item-size;
     text-align: center;
@@ -99,7 +147,7 @@
       background-color: @component-background;
       border: @border-width-base @border-style-base @border-color-base;
       border-radius: @border-radius-base;
-      color: @border-color-base;
+      color: @text-color;
       outline: none;
       transition: all 0.3s;
       svg {

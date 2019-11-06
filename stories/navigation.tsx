@@ -75,6 +75,8 @@ stories.add('Pagination', () => {
     <div className="demo demo-pagination">
       <h2>Basic</h2>
       <Pagination total={55}></Pagination>
+      <h2>More</h2>
+      <Pagination total={500} current={6}></Pagination>
     </div>
   )
 
