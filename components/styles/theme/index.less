@@ -29,13 +29,13 @@
 @shadow-color: rgba(0, 0, 0, 0.15);
 
 // Border
-@border-color-darker: #dcdfe6;
-@border-color: #e4e7ed;
-@border-color-lighter: #ebeef5;
+@border-color-base-darker: #dcdfe6;
+@border-color-base: #e4e7ed;
+@border-color-base-lighter: #ebeef5;
 
-@border-width: 1px;
-@border-style: solid;
-@border-radius: 4px;
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-radius-base: 4px;
 
 // Padding
 @padding-lg: 24px; // containers
@@ -49,6 +49,11 @@
 // Background
 @bg-color-black: #000;
 @bg-color-white: #fafafa;
+
+// TextColor
+
+// Component
+@component-background: #fff;
 
 // Animation
 @ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
@@ -87,8 +92,8 @@
 @btn-height: 40px;
 @btn-height-sm: 30px;
 
-@btn-border-radius: @border-radius;
-@btn-border-radius-sm: @border-radius;
+@btn-border-radius: @border-radius-base;
+@btn-border-radius-sm: @border-radius-base;
 
 @btn-primary-color: @primary-color;
 @btn-warning-color: @warning-color;
@@ -98,7 +103,7 @@
 @btn-disabled-color: @disabled-color;
 @btn-default-color: @bg-color-white;
 
-@btn-border-color: @border-color;
+@btn-border-color: @border-color-base;
 
 @btn-font-color-white: @font-color-white;
 @btn-font-color-dark: @font-color-dark;
@@ -127,7 +132,7 @@
 
 // Checkbox
 @checkbox-color: @primary-color;
-@checkbox-border-color: @border-color;
+@checkbox-border-color: @border-color-base;
 
 // Affix
 @zindex-affix: 100;
@@ -142,3 +147,10 @@
 
 // draggable
 @draggable-primary: @primary-color;
+
+// Pagination
+@pagination-item-size: 32px;
+@pagination-item-size-sm: 24px;
+@pagination-font-family: Arial;
+@pagination-font-weight-active: 500;
+@pagination-item-bg-active: #fff;

@@ -1,0 +1,131 @@
+@import '../../styles/index.less';
+
+@prefixCls: ~'@{prefix}-pagination';
+.@{prefixCls} {
+  .reset-component;
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-item {
+    display: inline-block;
+    min-width: @pagination-item-size;
+    height: @pagination-item-size;
+    margin-right: 8px;
+    font-family: @pagination-font-family;
+    line-height: @pagination-item-size - 2px;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    background-color: @component-background;
+    border: @border-width-base @border-style-base @border-color-base;
+    outline: 0;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      border-color: @primary-color;
+      transition: all 0.3s;
+    }
+    a {
+      display: block;
+      padding: 0 6px;
+    }
+    &-active {
+      font-weight: @pagination-font-weight-active;
+      background: @pagination-item-bg-active;
+      border-color: @primary-color;
+      a {
+        color: @primary-color;
+      }
+      &:hover,
+      &:focus {
+        border-color: @primary-color;
+      }
+      &:focus a,
+      &:hover a {
+        color: @primary-color;
+      }
+    }
+  }
+
+  &-prev,
+  &-jump-prev,
+  &-jump-next {
+    margin-right: 8px;
+  }
+
+  &-prev,
+  &-next,
+  &-jump-prev,
+  &-jump-next {
+    display: inline-block;
+    min-width: @pagination-item-size;
+    height: @pagination-item-size;
+    color: #fff;
+    font-family: @pagination-font-family;
+    line-height: @pagination-item-size;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    border-radius: @border-radius-base;
+    cursor: pointer;
+    transition: all 0.3s;
+    a {
+      display: block;
+      padding: 0 6px;
+      transition: none;
+    }
+  }
+
+  &-prev,
+  &-next {
+    outline: 0;
+    a {
+      user-select: none;
+      border: #666;
+    }
+    &:hover a {
+      border-color: @primary-color;
+    }
+    .@{prefixCls}-item-link {
+      position: relative;
+      display: block;
+      height: 100%;
+      font-size: 12px;
+      text-align: center;
+      background-color: @component-background;
+      border: @border-width-base @border-style-base @border-color-base;
+      border-radius: @border-radius-base;
+      color: @border-color-base;
+      outline: none;
+      transition: all 0.3s;
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &:focus .@{prefixCls}-item-link,
+    &:hover .@{prefixCls}-item-link {
+      color: @primary-color;
+      border-color: @primary-color;
+    }
+  }
+
+  &-disabled {
+    &,
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      a,
+      .@{prefixCls}-item-link {
+        color: @disabled-color;
+        border-color: @border-color-base;
+      }
+    }
+  }
+}

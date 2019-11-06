@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { PropsType } from './PropTypes'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import cls from 'classnames'
 import './styles/index.less'
 
-export default class Template extends Component<PropsType, {}> {
-  static defaultProps = {}
-  renderTemplate = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const { children, className, style, ...attr } = this.props
+const Pagination: React.FC<PropsType> = ({ children, className, style, ...attr }) => {
+  const renderTemplate = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('Template')
     const classes = cls(prefixCls, className)
     return (
@@ -16,7 +14,8 @@ export default class Template extends Component<PropsType, {}> {
       </div>
     )
   }
-  render() {
-    return <ConfigConsumer>{this.renderTemplate}</ConfigConsumer>
-  }
+
+  return <ConfigConsumer>{renderTemplate}</ConfigConsumer>
 }
+
+export default Pagination

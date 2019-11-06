@@ -6,6 +6,8 @@ import Affix from '../components/affix';
 import Button from '../components/button';
 import { Row, Col } from '../components/grid'
 import Breadcrumb from '../components/breadcrumb';
+import Pagination from '../components/pagination';
+
 
 const stories = storiesOf('Navigation', module)
 
@@ -65,6 +67,17 @@ stories.add('Breadcrumb', () => {
       </Breadcrumb>
     </div>
   );
-},
-);
+});
+
+// Pagination
+stories.add('Pagination', () => {
+  return (
+    <div className="demo demo-pagination">
+      <h2>Basic</h2>
+      <Pagination total={55}></Pagination>
+    </div>
+  )
+
+})
+
 
