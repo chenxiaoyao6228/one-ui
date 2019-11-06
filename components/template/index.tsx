@@ -4,7 +4,12 @@ import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import cls from 'classnames'
 import './styles/index.less'
 
-const Pagination: React.FC<PropsType> = ({ children, className, style, ...attr }) => {
+const Pagination: React.FC<PropsType> = ({
+  children,
+  className,
+  style,
+  ...attr
+}) => {
   const renderTemplate = ({ getPrefixCls }: ConfigConsumerProps) => {
     const prefixCls = getPrefixCls('Template')
     const classes = cls(prefixCls, className)

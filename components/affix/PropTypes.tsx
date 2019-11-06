@@ -1,6 +1,6 @@
 import * as React from 'react'
 export interface PropsType {
-  // prefix?: string;
+  prefix?: string;
   offsetTop?: number
   style?: React.CSSProperties
   className?: string

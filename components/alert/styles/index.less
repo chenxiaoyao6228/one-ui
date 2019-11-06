@@ -1,0 +1,42 @@
+@import '../../styles/index.less';
+
+@prefixCls: ~'@{prefix}-alert';
+.@{prefixCls} {
+  .reset-component;
+  position: relative;
+  padding: 8px 15px 8px 37px;
+  margin-bottom: 8px;
+  border-radius: @border-radius-base;
+  &-no-icon{
+    padding: 8px 15px;
+  }
+
+  &-error {
+    background-color:@alert-error-bg-color;
+    border: @border-width-base @border-style-base @alert-error-border-color;
+     .@{prefixCls}-icon {
+      color: @alert-error-icon-color;
+    }
+  }
+  &-info {
+    background-color: @alert-info-bg-color;
+    border: @border-width-base @border-style-base @alert-info-bg-color;
+     .@{prefixCls}-icon {
+      color: @alert-info-icon-color;
+    }
+  }
+  &-success {
+    background-color: @alert-success-bg-color;
+    border: @border-width-base @border-style-base @alert-success-bg-color;
+    .@{prefixCls}-icon {
+      color: @alert-success-icon-color;
+    }
+  }
+  &-warning {
+    background-color: @alert-warning-bg-color;
+    border: @border-width-base @border-style-base @alert-warning-bg-color;
+    .@{prefixCls}-icon {
+      color: @alert-warning-icon-color;
+    }
+  }
+}

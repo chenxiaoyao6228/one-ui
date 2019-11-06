@@ -5,6 +5,7 @@ import './styles/feedback.less';
 
 import Button from '../components/button'
 import Modal from '../components/modal';
+import Alert from '../components/alert';
 import useToggle from '../components/utils/hooks/useToggle';
 
 const stories = storiesOf('Feedback', module)
@@ -46,5 +47,18 @@ stories.add('Modal', () => {
       <ModalDemo />
     </div>
 
+  )
+})
+
+// Alert
+stories.add('Alert', () => {
+  return (
+    <div className="demo demo-alert">
+      <h2>Basic</h2>
+      {['success', 'error', 'warning', 'info'].map((type: any) => {
+        return <Alert type={type} message={`${type} Text`}></Alert>
+      })}
+      <h2></h2>
+    </div>
   )
 })
