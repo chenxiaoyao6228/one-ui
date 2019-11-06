@@ -1,9 +1,11 @@
 import React, { Context, createContext } from 'react'
 
+const defaultPrefixCls = 'yui'
+
 const ConfigContext: Context<ConfigConsumerProps | null> = createContext({
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls
-    return `one-${suffixCls}`
+    return `${defaultPrefixCls}-${suffixCls}`
   }
 })
 export const ConfigConsumer = ConfigContext.Consumer
@@ -18,7 +20,9 @@ export interface ConfigProviderProps {
 
 class ConfigProvider extends React.Component<ConfigProviderProps, any> {
   getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
-    const { prefixCls = 'one' } = this.props
+    const {
+      prefixCls = defaultPrefixCls
+    } = this.props
     if (customizePrefixCls) return customizePrefixCls
     return suffixCls ? `${prefixCls}-${suffixCls}` : prefixCls
   }
