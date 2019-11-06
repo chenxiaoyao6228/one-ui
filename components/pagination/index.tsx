@@ -7,9 +7,9 @@ import { FaAngleRight, FaAngleLeft, FaAngleDoubleLeft, FaAngleDoubleRight } from
 
 type jumperType = 'prev' | 'next' | 'jump-prev' | 'jump-next'
 
-let paginationKeyId = 0;
+let paginationKeyId = 0
 function uniqueId() {
-  return (paginationKeyId++).toString();
+  return (paginationKeyId++).toString()
 }
 
 const Pagination: React.FC<PropsType> = ({
@@ -20,21 +20,25 @@ const Pagination: React.FC<PropsType> = ({
   pageSize = 10,
   current = 1,
   activeIndex = 1,
+  onChange,
   ...attr
 }) => {
   const totalPage = Math.ceil(total / pageSize)
   const pagePerJump = 5
   const [active, setActive] = useState(activeIndex)
-  const handlePageChange = (i: number) => setActive(i)
+  const handlePageChange = (page: number) => {
+    setActive(page)
+    onChange && onChange(page, pageSize)
+  }
   const handlePreOrNextChange = (type: string) => {
     if (type === 'prev') {
-      active > 1 && setActive(active - 1)
+      active > 1 && handlePageChange(active - 1)
     } else if (type === 'next') {
-      active < totalPage && setActive(active + 1)
+      active < totalPage && handlePageChange(active + 1)
     } else if (type === 'jump-prev') {
-      active - pagePerJump > 1 && setActive(active - pagePerJump)
+      active - pagePerJump > 1 && handlePageChange(active - pagePerJump)
     } else {
-      active + pagePerJump < totalPage && setActive(active + pagePerJump)
+      active + pagePerJump < totalPage && handlePageChange(active + pagePerJump)
     }
   }
   const renderPagination = ({ getPrefixCls }: ConfigConsumerProps) => {
@@ -70,9 +74,7 @@ const Pagination: React.FC<PropsType> = ({
             handlePreOrNextChange(type)
           }}
         >
-          <a className={`${prefixCls}-item-link`}>
-            {createJumperIcon(type)}
-          </a>
+          <a className={`${prefixCls}-item-link`}>{createJumperIcon(type)}</a>
         </li>
       )
     }
@@ -108,7 +110,7 @@ const Pagination: React.FC<PropsType> = ({
               Items.push(createItem(active, i))
             }
           } else if (active >= 5 && active + 4 < totalPage) {
-            //[1, ...5, 6, 7..., 11]
+            // [1, ...5, 6, 7..., 11]
             if ([active - 1, active, active + 1].indexOf(i) > -1) {
               Items.push(createItem(active, i))
             }

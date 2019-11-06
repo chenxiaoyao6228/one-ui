@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import './styles/navigation.less';
 
 import Affix from '../components/affix';
@@ -74,9 +75,11 @@ stories.add('Pagination', () => {
   return (
     <div className="demo demo-pagination">
       <h2>Basic</h2>
-      <Pagination total={55}></Pagination>
+      <Pagination total={55} onChange={(page, pageSize) => console.log(`page: ${page}`, `pageSize: ${pageSize}`)}></Pagination>
       <h2>More</h2>
-      <Pagination total={500} current={6}></Pagination>
+      <Pagination total={500} current={6} onChange={action('pageChange')}></Pagination>
+      {/* <h2>Quick Jump</h2>
+      <Pagination total={500} current={6} showQuickJumper></Pagination> */}
     </div>
   )
 

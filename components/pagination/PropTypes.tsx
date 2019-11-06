@@ -8,4 +8,6 @@ export interface PropsType {
   pageSize?: number
   activeIndex?: number
   total: number
+  onChange?: (page: number, pageSize: number) => void
+  showQuickJumper?: boolean
 }
