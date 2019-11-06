@@ -58,7 +58,10 @@ stories.add('Alert', () => {
       {['success', 'error', 'warning', 'info'].map((type: any) => {
         return <Alert type={type} message={`${type} Text`}></Alert>
       })}
-      <h2></h2>
-    </div>
+      <h2>Closable</h2>
+      {['success', 'error', 'warning', 'info'].map((type: any) => {
+        return <Alert type={type} message={`${type} Text`} closable></Alert>
+      })}
+    </div >
   )
 })

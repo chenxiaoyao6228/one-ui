@@ -6,4 +6,5 @@ export interface PropsType {
   className?: string
   message: string | React.ReactNode
   type: 'success' | 'error' | 'info' | 'warning'
+  closable?: boolean
 }

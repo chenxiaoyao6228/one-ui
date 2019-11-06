@@ -49,7 +49,7 @@ const Modal: React.FC<Props> = ({
     const modalContent = (
       <div className={cls(`${prefixCls}-content`, centered ? `${prefixCls}-content-centered` : null)}>
         <div className={`${prefixCls}-header`}>
-          <span className={`${prefixCls}-title`}>{title}</span>
+          <i className={`${prefixCls}-title`}>{title}</i>
           <div className={`${prefixCls}-close`} data-testid='modal-cancel' onClick={handleCancelClick}>
             <i className={`${prefixCls}-closeBtn`}>
               <MdClose />
