@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions';
 import './styles/feedback.less';
 
 import Button from '../components/button'
@@ -55,13 +55,44 @@ stories.add('Alert', () => {
   return (
     <div className="demo demo-alert">
       <h2>Basic</h2>
-      {['success', 'error', 'warning', 'info'].map((type: any) => {
-        return <Alert type={type} message={`${type} Text`}></Alert>
+      {['success', 'error', 'warning', 'info'].map((type: any, index: number) => {
+        return <Alert
+          key={index}
+          type={type}
+          message={`${type} Text`}>
+        </Alert>
       })}
-      <h2>Closable</h2>
-      {['success', 'error', 'warning', 'info'].map((type: any) => {
-        return <Alert type={type} message={`${type} Text`} closable></Alert>
+      <h2>Closable and onClose Callback</h2>
+      {['success', 'error', 'warning', 'info'].map((type: any, index: number) => {
+        return <Alert
+          key={index}
+          type={type}
+          message={`${type} Text`}
+          closable
+          onClose={action("alert message closed")}
+        ></Alert>
       })}
+      <h2>With Icon</h2>
+      {['success', 'error', 'warning', 'info'].map((type: any, index: number) => {
+        return <Alert
+          key={index}
+          type={type}
+          message={`${type} Text`}
+          showIcon
+        ></Alert>
+      })
+      }
+      {
+        ['success', 'error', 'warning', 'info'].map((type: any, index: number) => {
+          return <Alert
+            key={index}
+            type={type}
+            message={`${type} Text`}
+            description={`Additional message for ${type} `}
+            showIcon
+          ></Alert>
+        })
+      }
     </div >
   )
 })

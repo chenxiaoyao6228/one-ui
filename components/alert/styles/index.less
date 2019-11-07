@@ -11,6 +11,12 @@
     padding: 8px 15px;
   }
 
+  &-icon {
+    position: absolute;
+    top: 6px + @font-size * @line-height-base / 2 - @font-size / 2;
+    left: 16px;
+  }
+
   &-close-icon {
     position: absolute;
     top: 0;
@@ -28,32 +34,79 @@
     cursor: pointer;
   }
 
+  &-description {
+    display: none;
+    font-size: @font-size;
+    line-height: 22px;
+  }
+
+
   &-error {
     background-color:@alert-error-bg-color;
     border: @border-width-base @border-style-base @alert-error-border-color;
-     .@{prefixCls}-icon {
-      color: @alert-error-icon-color;
-    }
+    //  .@{prefixCls}-icon {
+    //   color: @alert-error-icon-color;
+    // }
   }
   &-info {
     background-color: @alert-info-bg-color;
     border: @border-width-base @border-style-base @alert-info-bg-color;
-     .@{prefixCls}-icon {
-      color: @alert-info-icon-color;
-    }
+    //  .@{prefixCls}-icon {
+    //   color: @alert-info-icon-color;
+    // }
   }
   &-success {
     background-color: @alert-success-bg-color;
     border: @border-width-base @border-style-base @alert-success-bg-color;
-    .@{prefixCls}-icon {
-      color: @alert-success-icon-color;
-    }
+    // .@{prefixCls}-icon {
+    //   color: @alert-success-icon-color;
+    // }
   }
   &-warning {
     background-color: @alert-warning-bg-color;
     border: @border-width-base @border-style-base @alert-warning-bg-color;
-    .@{prefixCls}-icon {
-      color: @alert-warning-icon-color;
-    }
+    // .@{prefixCls}-icon {
+    //   color: @alert-warning-icon-color;
+    // }
   }
+
+
+  &-with-description {
+    position: relative;
+    padding: 15px 15px 15px 64px;
+    color: @alert-text-color;
+    line-height: @line-height-base;
+    border-radius: @border-radius-base;
+  }
+
+  &-with-description&-no-icon {
+    padding: 15px;
+  }
+
+  &-with-description &-icon {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-size: 24px;
+  }
+
+  &-with-description &-close-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: @font-size;
+    cursor: pointer;
+  }
+
+  &-with-description &-message {
+    display: block;
+    margin-bottom: 4px;
+    color: @alert-message-color;
+    font-size: @font-size-lg;
+  }
+
+  &-with-description &-description {
+    display: block;
+  }
+
 }
