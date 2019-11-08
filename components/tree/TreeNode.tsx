@@ -16,8 +16,8 @@ const TreeNode: React.FC<NodeProps> = ({ data, onCollapse, onCheck }) => {
             {data.collapsed ? <FaCaretRight /> : <FaCaretDown />}
           </span>
         ) : (
-          ''
-        )}
+            ''
+          )}
         {data.type === 'folder' ? data.collapsed ? <FaFolder /> : <FaFolderOpen /> : <FaFileAlt />}
         <span>{data.name}</span>
       </div>

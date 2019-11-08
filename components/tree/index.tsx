@@ -6,12 +6,13 @@ import './styles/index.less'
 
 const Tree: React.FC<Props> = ({ data }) => {
   const [stateData, setStateData] = useState({ data: data })
-  let keyNodeMap = {}
+  let keyNodeMap: KeyNodeMap = {}
   useEffect(() => {
     bindKeyMap()
   })
   const bindKeyMap = () => {
     let data = stateData.data
+    keyNodeMap[data.key] = data
     if (data.children && data.children.length) {
       walk(data.children, data)
     }
@@ -20,7 +21,9 @@ const Tree: React.FC<Props> = ({ data }) => {
     children.forEach((child: TreeData) => {
       child.parent = parent
       keyNodeMap[child.key] = child
-      if (child.children && child.children.length) [walk(child.children, child)]
+      if (child.children && child.children.length > 0) {
+        walk(child.children, child)
+      }
     })
   }
   const onCollapse = (key: string) => {
@@ -30,6 +33,7 @@ const Tree: React.FC<Props> = ({ data }) => {
       if (children) {
         data.collapsed = !data.collapsed
         data.children = data.children || []
+        debugger
         setStateData(stateData)
       } else {
         // todo

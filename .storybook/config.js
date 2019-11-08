@@ -5,17 +5,17 @@ import { setConsoleOptions, withConsole } from '@storybook/addon-console';
 // automatically import all files ending in *.stories.tsx
 
 function loadStories() {
-  // require('../stories/navigation');
+  require('../stories/common');
 
-  // require('../stories/common');
+  require('../stories/layout');
+
+  require('../stories/input');
+
+  require('../stories/dataDisplay');
+
+  require('../stories/navigation');
 
   require('../stories/feedback');
-
-  // require('../stories/layout');
-
-  // require('../stories/input');
-
-  // require('../stories/dataDisplay');
 }
 
 // https://storybook.js.org/docs/configurations/options-parameter/

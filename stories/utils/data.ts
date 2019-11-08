@@ -22,7 +22,7 @@ const data = {
       name: 'src',
       key: '1-2',
       type: 'folder',
-      collapsed: true,
+      collapsed: false,
       children: [
         {
           name: 'components',

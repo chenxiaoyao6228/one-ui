@@ -101,7 +101,7 @@ const Draggable: React.FC<Props> = ({
       position: dragging ? 'relative' : null
     }
     // make sure only accept one child
-    React.Children.only(children)
+    // React.Children.only(children)
     const newChildren = React.Children.map(children, (child: any) => {
       // extend pros for child
       return React.cloneElement(child, {
@@ -125,8 +125,8 @@ const Draggable: React.FC<Props> = ({
             onMouseOut={handleMouseUpOrOut}
           />
         ) : (
-          ''
-        )}
+            ''
+          )}
       </Fragment>
     )
   }

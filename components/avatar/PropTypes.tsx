@@ -6,6 +6,7 @@ export interface Props {
   alt?: string
   style?: React.CSSProperties
   className?: string
+  children?: React.ReactNode
 }
 
 export interface State {

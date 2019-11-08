@@ -18,7 +18,7 @@ import {
   AiOutlineInfoCircle
 } from "react-icons/ai";
 
-export const OneAlipay = FaAlipay
+
 export const OneUserOutline = TiUserOutline
 
 

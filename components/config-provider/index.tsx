@@ -1,6 +1,6 @@
 import React, { Context, createContext } from 'react'
 
-const defaultPrefixCls = 'yui'
+const defaultPrefixCls = 'one'
 
 const ConfigContext: Context<ConfigConsumerProps | null> = createContext({
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
