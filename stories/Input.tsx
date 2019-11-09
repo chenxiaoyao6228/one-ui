@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
 import { Row, Col } from '../components/grid';
+import Input from '../components/input';
+import './styles/input.less';
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const defaultCheckedList = ['Apple', 'Orange'];
@@ -114,3 +116,43 @@ stories.add('Checkbox', () => {
     </div >
   );
 });
+
+stories.add('Input', () => {
+  return (
+    <div className="demo demo-input">
+      <div style={{ width: 400 }}>
+        <h2>Basic</h2>
+        <Input
+          placeholder="place your input here"
+          onChange={(e: any) => console.log(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="password"
+          style={{ margin: "10px 0" }}
+        />
+        <Input type="number" placeholder="number" />
+        <Input
+          placeholder="default"
+          defaultValue="default"
+          style={{ margin: "10px 0" }}
+        />
+        <Input readonly value="readonly" style={{ marginBottom: 10 }} />
+        <Input disabled placeholder="readonly" />
+
+        <h2>AddonBefore, AddonAfter</h2>
+        <Input placeholder="" />
+        <Input
+          addonAfter={".com"}
+          placeholder="website"
+          style={{ margin: "10px 0" }}
+        />
+        <Input
+          addonBefore={"https://"}
+          addonAfter={".cn"}
+          placeholder="www.chenxiaoyao"
+        />
+      </div>
+    </div>
+  )
+})

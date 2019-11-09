@@ -4,7 +4,15 @@ import { PropsType } from './PropTypes'
 import cls from 'classnames'
 import './styles/index.less'
 
-const Affix: React.FC<PropsType> = ({ offsetTop = 0, callback, className, style, children, ...attr }) => {
+const Affix: React.FC<PropsType> = ({
+  prefix: customizePrefixCls,
+  offsetTop = 0,
+  callback,
+  className,
+  style,
+  children,
+  ...attr
+}) => {
   const [fixed, setFixed] = useState(false)
 
   const container = useRef<HTMLDivElement>()

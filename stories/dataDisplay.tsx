@@ -25,10 +25,6 @@ stories.add('BackTop', () => (
         <Backtop>
           <Button type="primary">Top</Button>
         </Backtop>
-        <h2>Custom Icon</h2>
-        <Backtop>
-          <Button type="primary">Top</Button>
-        </Backtop>
       </Col>
     </Row>
   </div>
@@ -76,7 +72,7 @@ stories.add('Badge', () => (<div className='demo'>
   </Row>
   <Row style={{ marginTop: 50 }}>
     <Col span={12}>
-      <h2>custom style</h2>
+      <h2>Custom style</h2>
       <Row>
         <Col span={8}>
           <Badge count={10} style={{ backgroundColor: '#52c41a' }}>
