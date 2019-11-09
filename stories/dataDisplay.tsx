@@ -25,6 +25,10 @@ stories.add('BackTop', () => (
         <Backtop>
           <Button type="primary">Top</Button>
         </Backtop>
+        <h2>Custom Icon</h2>
+        <Backtop>
+          <Button type="primary">Top</Button>
+        </Backtop>
       </Col>
     </Row>
   </div>

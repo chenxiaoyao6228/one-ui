@@ -1,7 +1,7 @@
 {
   "name": "one",
   "version": "0.0.0",
-  "description": "React Components Collection With React Hooks",
+  "description": "React Component Collections With React Hooks",
   "keywords": [
     "react",
     "ui",
@@ -13,6 +13,8 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn build:cjs && yarn build:es",
+    "build:docs": "build-storybook -c .storybook -o .out",
+    "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=.out",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "commit": "git-cz",
@@ -66,6 +68,7 @@
     "@storybook/addons": "^5.2.3",
     "@storybook/react": "5.2.3",
     "@storybook/source-loader": "^5.2.5",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "@types/classnames": "^2.2.9",
