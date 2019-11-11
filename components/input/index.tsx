@@ -21,7 +21,7 @@ const Input: React.FC<PropsType> = ({
     onChange && onChange(e)
   }
   const renderInput = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const prefixCls = getPrefixCls('input')
+    const prefixCls = getPrefixCls('input', customizePrefixCls)
     const inputEle = (
       <input
         type={type}

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
 import { Row, Col } from '../components/grid';
 import Input from '../components/input';
+import { Radio, RadioGroup } from '../components/radio';
 import './styles/input.less';
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
@@ -153,6 +154,22 @@ stories.add('Input', () => {
           placeholder="www.chenxiaoyao"
         />
       </div>
+    </div>
+  )
+})
+
+stories.add('Radio', () => {
+  const [checked, setChecked] = useState('pear')
+  const onChange = (e: any) => {
+    setChecked(e.currentTarget.value)
+  }
+  return (
+    <div className="demo">
+      <h2>Basic</h2>
+      <RadioGroup onChange={onChange} value={checked}>
+        <Radio value="apple" name="fruit">apple</Radio>
+        <Radio value="pear" name="fruit">pear</Radio>
+      </RadioGroup>
     </div>
   )
 })

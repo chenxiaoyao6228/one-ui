@@ -5,13 +5,14 @@ import cls from 'classnames'
 import './styles/index.less'
 
 const Pagination: React.FC<PropsType> = ({
+  prefix: customizePrefixCls,
   children,
   className,
   style,
   ...attr
 }) => {
   const renderTemplate = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const prefixCls = getPrefixCls('Template')
+    const prefixCls = getPrefixCls('Template', customizePrefixCls)
     const classes = cls(prefixCls, className)
     return (
       <div className={classes} {...attr}>
