@@ -13,6 +13,7 @@ const RadioGroup: React.FC<GroupProps> = ({
   style,
   onChange,
   value,
+  disabled,
   ...attr
 }) => {
   const handleChange = (e: any) => {
@@ -30,7 +31,8 @@ const RadioGroup: React.FC<GroupProps> = ({
           React.Children.map(children, (child: React.ReactElement) => {
             return React.cloneElement(child, {
               checked: value,
-              onChange: handleChange
+              onChange: handleChange,
+              disabled: disabled
             })
           })
         }

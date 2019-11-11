@@ -5,10 +5,10 @@ export interface Props {
   style?: React.CSSProperties
   className?: string
   onChange?: (e: any) => void
-  value?: any
+  value?: any // 元素的value值 
+  checked?: any; // 选中元素的value值
+  name: string; // 一组radio的name值
   disabled?: boolean;
-  name: string;
-  checked?: boolean;
 }
 
 
@@ -18,4 +18,5 @@ export interface GroupProps {
   className?: string
   onChange?: (e: any) => void
   value?: any
+  disabled?: boolean;
 }

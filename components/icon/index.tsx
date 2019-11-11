@@ -15,7 +15,8 @@ import {
   AiOutlineCloseCircle,
   AiOutlineCheckCircle,
   AiOutlineWarning,
-  AiOutlineInfoCircle
+  AiOutlineInfoCircle,
+  AiOutlineLoading3Quarters // loading
 } from "react-icons/ai";
 
 
@@ -27,3 +28,4 @@ export const AlertIconSuccess = AiOutlineCheckCircle
 export const AlertIconWarning = AiOutlineWarning
 export const AlertIconInfo = AiOutlineInfoCircle
 export const AlertIconError = AiOutlineCloseCircle
+export const SwitchLoadingIcon = AiOutlineLoading3Quarters

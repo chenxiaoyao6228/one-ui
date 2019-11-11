@@ -1,9 +1,12 @@
 import React, { Component, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, CheckboxGroup } from '../components/checkbox';
+import { Radio, RadioGroup } from '../components/radio';
 import { Row, Col } from '../components/grid';
 import Input from '../components/input';
-import { Radio, RadioGroup } from '../components/radio';
+import Button from '../components/button'
+import Switch from '../components/switch'
+import useToggle from '../components/utils/hooks/useToggle';
 import './styles/input.less';
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
@@ -159,17 +162,62 @@ stories.add('Input', () => {
 })
 
 stories.add('Radio', () => {
+  const [basicChecked, setBasicChecked] = useState('pear')
+  const handleBasicChange = (e: any) => {
+    setBasicChecked(e.currentTarget.value)
+  }
+
   const [checked, setChecked] = useState('pear')
-  const onChange = (e: any) => {
+  const [disabled, setDisabled] = useState(false)
+  const toggleDisabled = (e: any) => {
+    setDisabled(!disabled)
+  }
+  const handleChange = (e: any) => {
     setChecked(e.currentTarget.value)
   }
   return (
     <div className="demo">
       <h2>Basic</h2>
-      <RadioGroup onChange={onChange} value={checked}>
+      <RadioGroup onChange={handleBasicChange} value={basicChecked}>
         <Radio value="apple" name="fruit">apple</Radio>
         <Radio value="pear" name="fruit">pear</Radio>
+        <Radio value="orange" name="fruit">orange</Radio>
       </RadioGroup>
+      <h2>Disabled</h2>
+      <RadioGroup onChange={handleChange} value={checked} disabled={disabled}>
+        <Radio value="apple" name="fruit">apple</Radio>
+        <Radio value="pear" name="fruit">pear</Radio>
+        <Radio value="orange" name="fruit">orange</Radio>
+      </RadioGroup>
+      <Button type="primary" style={{ marginTop: 20 }} onClick={toggleDisabled}>Toggle Disabled </Button>
+    </div>
+  )
+})
+
+stories.add('Switch', () => {
+  const [basicChecked, toggleBasicChecked] = useToggle(false)
+
+  const [value, toggle] = useToggle(false)
+  const [disabled, toggleDisabled] = useToggle(false)
+
+  const [loading, toggleLoading] = useToggle(true)
+  const [value1, setValue1] = useToggle(true)
+  return (
+    <div className="demo">
+      <h2>Basic</h2>
+      <Switch checked={basicChecked} onChange={toggleBasicChecked}></Switch>
+      <h2>Disabled</h2>
+      <Switch checked={value} onChange={toggle} disabled={disabled}></Switch>
+      <br></br>
+      <Button onClick={toggleDisabled} type="primary" style={{ marginTop: 20 }}>Toggle Disabled</Button>
+      <h2>Size</h2>
+      <Switch checked={value1} onChange={setValue1} size="large" style={{ marginRight: 20 }}></Switch>
+      <Switch checked={value1} onChange={setValue1} style={{ marginRight: 20 }}></Switch>
+      <Switch checked={value1} onChange={setValue1} size="small"></Switch>
+      <h2>Loading</h2>
+      {/* <Switch loading={loading} size="large" checked style={{ margi nRight: 20 }}></Switch> */}
+      <Switch loading={loading} checked style={{ marginRight: 20 }}></Switch>
+      {/* <Switch loading={loading} size="small" checked ></Switch> */}
     </div>
   )
 })

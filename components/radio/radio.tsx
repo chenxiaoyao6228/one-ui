@@ -46,7 +46,7 @@ const Radio: React.FC<Props> = ({
             onChange={handleChange}
             disabled={disabled}
           />
-          <span className={cls(`${prefixCls}-inner`)} ></span>
+          <span className={cls(`${prefixCls}-inner`)}></span>
         </span>
         <span>{children}</span>
       </label >

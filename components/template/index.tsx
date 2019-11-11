@@ -1,18 +1,18 @@
 import * as React from 'react'
-import { PropsType } from './PropTypes'
+import { Props } from './PropTypes'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import cls from 'classnames'
 import './styles/index.less'
 
-const Pagination: React.FC<PropsType> = ({
+const Switch: React.FC<Props> = ({
   prefix: customizePrefixCls,
   children,
   className,
   style,
   ...attr
 }) => {
-  const renderTemplate = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const prefixCls = getPrefixCls('Template', customizePrefixCls)
+  const renderSwitch = ({ getPrefixCls }: ConfigConsumerProps) => {
+    const prefixCls = getPrefixCls('switch', customizePrefixCls)
     const classes = cls(prefixCls, className)
     return (
       <div className={classes} {...attr}>
@@ -21,7 +21,7 @@ const Pagination: React.FC<PropsType> = ({
     )
   }
 
-  return <ConfigConsumer>{renderTemplate}</ConfigConsumer>
+  return <ConfigConsumer>{renderSwitch}</ConfigConsumer>
 }
 
-export default Pagination
+export default Switch
