@@ -181,12 +181,12 @@ stories.add('Draggable', () => {
 
 
 // Tree
-stories.add('Tree', () => (
-  <div className="demo" style={{ marginTop: 20 }}>
-    <h2>Basic</h2>
-    <Tree data={data}></Tree>
-  </div>
-))
+// stories.add('Tree', () => (
+//   <div className="demo" style={{ marginTop: 20 }}>
+//     <h2>Basic</h2>
+//     <Tree data={data}></Tree>
+//   </div>
+// ))
 
 
 // Avatar
