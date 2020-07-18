@@ -6,18 +6,16 @@ import Button from '../components/button';
 import Draggable from '../components/draggable';
 import Avatar from '../components/avatar';
 import Backtop from '../components/backtop';
-import Tree from '../components/tree';
+// import Tree from '../components/tree';
 import data from './utils/data';
-
 
 import './styles/dataDisplay.less';
 
-
-const stories = storiesOf('Data Display', module)
+const stories = storiesOf('Data Display', module);
 
 // BackTop
 stories.add('BackTop', () => (
-  <div className='demo' style={{ minHeight: 3000 }}>
+  <div className="demo" style={{ minHeight: 3000 }}>
     <Row>
       <Col span={12}>
         <h2>Basic backtop</h2>
@@ -28,119 +26,108 @@ stories.add('BackTop', () => (
       </Col>
     </Row>
   </div>
-))
+));
 
 // Badge
-stories.add('Badge', () => (<div className='demo'>
-  <Row>
-    <Col span={12}>
-      <h2>Basic Badge</h2>
-      <Row>
-        <Col span={8}>
-          <Badge count={10}>
+stories.add('Badge', () => (
+  <div className="demo">
+    <Row>
+      <Col span={12}>
+        <h2>Basic Badge</h2>
+        <Row>
+          <Col span={8}>
+            <Badge count={10}>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}>
+            <Badge count={0} showZero>
+              <Button type="primary">No Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}></Col>
+        </Row>
+      </Col>
+      <Col span={12}>
+        <h2>Overflow Count</h2>
+        <Row>
+          <Col span={8}>
+            <Badge count={1000}>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Badge count={1000} overflowCount={999}>
             <Button type="primary">Unread message</Button>
           </Badge>
-        </Col>
-        <Col span={8}>
-          <Badge count={0} showZero>
-            <Button type="primary">No Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8}>
-        </Col>
-      </Row>
-    </Col>
-    <Col span={12}>
-      <h2>Overflow Count</h2>
-      <Row>
-        <Col span={8}>
-          <Badge count={1000}>
-            <Button type="primary">Unread message</Button>
-          </Badge>
-        </Col>
-        <Badge count={1000} overflowCount={999}>
-          <Button type="primary">Unread message</Button>
-        </Badge>
-        <Col span={8}>
-
-        </Col>
-        <Col span={8}>
-
-        </Col>
-      </Row>
-    </Col>
-  </Row>
-  <Row style={{ marginTop: 50 }}>
-    <Col span={12}>
-      <h2>Custom style</h2>
-      <Row>
-        <Col span={8}>
-          <Badge count={10} style={{ backgroundColor: '#52c41a' }}>
-            <Button type="primary">Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8}>
-          <Badge count={10} style={{ backgroundColor: '#745e2e' }}>
-            <Button type="primary">Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8}>
-
-        </Col>
-      </Row>
-    </Col>
-    <Col span={12}>
-      <h2>Dot</h2>
-      <Row>
-        <Col span={8}>
-          <Badge dot>
-            <Button type="primary">Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8} >
-          <Badge dot >
-            Unread message
-              </Badge>
-        </Col>
-        <Col span={8}>
-
-        </Col>
-      </Row>
-    </Col>
-  </Row>
-  <Row style={{ marginTop: 50 }}>
-    <Col span={12}>
-      <h2>Callback</h2>
-      <Row>
-        <Col span={8}>
-          <Badge count={10} onClick={(e) => alert('Read message')}>
-            <Button type="primary">Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8}>
-          <Badge count={0} showZero onClick={(e) => alert('Read message')}>
-            <Button type="primary">No Unread message</Button>
-          </Badge>
-        </Col>
-        <Col span={8}>
-        </Col>
-      </Row>
-    </Col>
-  </Row>
-</div>
-))
+          <Col span={8}></Col>
+          <Col span={8}></Col>
+        </Row>
+      </Col>
+    </Row>
+    <Row style={{ marginTop: 50 }}>
+      <Col span={12}>
+        <h2>Custom style</h2>
+        <Row>
+          <Col span={8}>
+            <Badge count={10} style={{ backgroundColor: '#52c41a' }}>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}>
+            <Badge count={10} style={{ backgroundColor: '#745e2e' }}>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}></Col>
+        </Row>
+      </Col>
+      <Col span={12}>
+        <h2>Dot</h2>
+        <Row>
+          <Col span={8}>
+            <Badge dot>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}>
+            <Badge dot>Unread message</Badge>
+          </Col>
+          <Col span={8}></Col>
+        </Row>
+      </Col>
+    </Row>
+    <Row style={{ marginTop: 50 }}>
+      <Col span={12}>
+        <h2>Callback</h2>
+        <Row>
+          <Col span={8}>
+            <Badge count={10} onClick={e => alert('Read message')}>
+              <Button type="primary">Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}>
+            <Badge count={0} showZero onClick={e => alert('Read message')}>
+              <Button type="primary">No Unread message</Button>
+            </Badge>
+          </Col>
+          <Col span={8}></Col>
+        </Row>
+      </Col>
+    </Row>
+  </div>
+));
 
 // Draggable
 stories.add('Draggable', () => {
   const start = (e: any, ui: any) => {
     console.log(ui);
-  }
+  };
   const drag = (e: any, ui: any) => {
     console.log(ui);
-  }
+  };
   const stop = (e: any, ui: any) => {
     console.log(ui);
-  }
+  };
   return (
     <div className="demo">
       <h2>Axis</h2>
@@ -165,7 +152,9 @@ stories.add('Draggable', () => {
       </Draggable>
       <Draggable cancel=".cancel">
         <div className="box">
-          <Button className="cancel" style={{ cursor: 'move' }}>Can not drag here</Button>
+          <Button className="cancel" style={{ cursor: 'move' }}>
+            Can not drag here
+          </Button>
           <div>Can be dragged here</div>
         </div>
       </Draggable>
@@ -176,9 +165,8 @@ stories.add('Draggable', () => {
         <div className="box">zIndex support</div>
       </Draggable>
     </div>
-  )
-})
-
+  );
+});
 
 // Tree
 // stories.add('Tree', () => (
@@ -187,7 +175,6 @@ stories.add('Draggable', () => {
 //     <Tree data={data}></Tree>
 //   </div>
 // ))
-
 
 // Avatar
 // stories.add('avatar', () => {

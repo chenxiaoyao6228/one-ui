@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@commitlint/prompt": "~8.1.0",

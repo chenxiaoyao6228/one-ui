@@ -1,5 +1,5 @@
 module.exports = ({ config }) => {
-  console.dir(config, { depth: null }) || config;
+  // console.dir(config, { depth: null }) || config;
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     use: [
